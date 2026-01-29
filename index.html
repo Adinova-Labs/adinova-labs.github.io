@@ -1,205 +1,228 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Adinova Labs – Premium Android Apps & Tools</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Adinova Labs – Premium Android Apps & Tools</title>
 
-    <!-- Tailwind -->
-    <script src="https://cdn.tailwindcss.com"></script>
+<script src="https://cdn.tailwindcss.com"></script>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
 
-    <!-- Icons -->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+<style>
+body {
+    font-family: 'Inter', sans-serif;
+    background: linear-gradient(180deg,#07000f,#0c0018,#000);
+    color: white;
+    overflow-x: hidden;
+}
 
-    <style>
-        body {
-            font-family: 'Inter', sans-serif;
-            background: #0a0a0a;
-            color: white;
-            scroll-behavior: smooth;
-        }
+/* Neon Glow */
+.neon {
+    color: #c084fc;
+    text-shadow: 0 0 10px #a855f7,0 0 25px #7e22ce;
+}
 
-        /* Neon Purple Glow */
-        .neon-title {
-            color: #c084fc;
-            text-shadow: 0 0 12px #a855f7, 0 0 24px #7e22ce;
-        }
+/* Glass Card */
+.glass {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.12);
+    backdrop-filter: blur(12px);
+    border-radius: 20px;
+    transition: .3s;
+}
+.glass:hover {
+    box-shadow: 0 0 25px rgba(192,132,252,.35);
+    border-color: rgba(192,132,252,.4);
+    transform: translateY(-6px);
+}
 
-        /* Glassmorphism Card */
-        .glass-card {
-            background: rgba(255, 255, 255, 0.05);
-            border: 1px solid rgba(255, 255, 255, 0.12);
-            backdrop-filter: blur(12px);
-            border-radius: 20px;
-            transition: transform 0.3s ease;
-        }
-        .glass-card:hover {
-            transform: translateY(-6px);
-            border-color: rgba(192,132,252,0.5);
-            box-shadow: 0 0 20px rgba(192,132,252,0.3);
-        }
+/* Page Fade Animation */
+.fade {
+    animation: fadeIn 1.2s ease forwards;
+    opacity: 0;
+}
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
 
-        /* Hero Gradient */
-        .hero-bg {
-            background: linear-gradient(135deg, #130027, #25004a, #000000);
-        }
-
-        /* Modal */
-        .modal-bg {
-            backdrop-filter: blur(10px);
-        }
-    </style>
+/* Scroll-up animation */
+.reveal {opacity:0; transform:translateY(30px); transition:1s;}
+.reveal.active {opacity:1; transform:translateY(0);}
+</style>
 </head>
 
 <body>
 
-<!-- NAVBAR -->
-<nav class="fixed w-full top-0 z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto flex items-center justify-between px-6 h-16">
-        <div class="flex items-center gap-3">
-            <div class="w-10 h-10 rounded-xl bg-purple-600 flex items-center justify-center text-2xl font-bold text-white">
-                A
-            </div>
-            <h1 class="text-xl font-bold tracking-wide">Adinova Labs</h1>
+<!-- NAV -->
+<nav class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
+    <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-6">
+        <div class="flex gap-3 items-center">
+            <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-2xl font-bold">A</div>
+            <span class="font-bold text-lg tracking-wide">Adinova Labs</span>
         </div>
-
         <div class="hidden md:flex gap-8 text-sm">
             <a href="#home" class="hover:text-purple-400">Home</a>
-            <a href="#about" class="hover:text-purple-400">About</a>
             <a href="#apps" class="hover:text-purple-400">Apps</a>
             <a href="#founder" class="hover:text-purple-400">Founder</a>
             <a href="#contact" class="hover:text-purple-400">Contact</a>
         </div>
-
-        <a href="#apps" class="px-4 py-2 bg-purple-600 hover:bg-purple-700 rounded-xl text-sm font-semibold">
-            Explore Apps
-        </a>
+        <a href="#apps" class="px-4 py-2 bg-purple-600 rounded-xl hover:bg-purple-700">Explore</a>
     </div>
 </nav>
 
 <!-- HERO -->
-<section id="home" class="hero-bg pt-32 pb-32 text-center px-6">
-    <h1 class="text-5xl md:text-6xl font-extrabold neon-title">
-        Crafting Premium Android Experiences
-    </h1>
-
-    <p class="text-gray-300 text-lg max-w-2xl mx-auto mt-6">
-        High-quality apps designed to simplify everyday life — built with passion, precision, and innovation.
+<section id="home" class="pt-32 pb-40 text-center fade">
+    <h1 class="neon text-5xl md:text-6xl font-extrabold">Crafting Premium Apps</h1>
+    <p class="text-gray-300 mt-6 text-lg max-w-xl mx-auto">
+        Futuristic Android apps built with creativity, precision and innovation.
     </p>
-
-    <div class="mt-10 flex justify-center gap-5">
-        <a href="#apps" class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-bold text-lg">
-            Browse Apps
-        </a>
-        <a href="#about" class="px-8 py-3 border border-purple-500 rounded-xl font-bold text-lg hover:bg-purple-500/20">
-            Learn More
-        </a>
+    <div class="mt-10 flex justify-center gap-6">
+        <a href="#apps" class="px-8 py-3 bg-purple-600 rounded-xl hover:bg-purple-700 font-bold">Browse Apps</a>
+        <a href="#founder" class="px-8 py-3 border border-purple-500 rounded-xl hover:bg-purple-500/20 font-bold">Meet Founder</a>
     </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about" class="py-24 px-6 max-w-6xl mx-auto">
-    <h2 class="text-4xl font-bold neon-title text-center mb-12">About Adinova Labs</h2>
-
-    <div class="glass-card p-10 text-gray-300 leading-relaxed">
-        We are a next-generation Android development studio focused on building fast, modern, 
-        and user-friendly apps. Our mission is simple — **technology should make life easier**, 
-        not harder. Every app we build reflects innovation, clarity, privacy, and purpose.
-    </div>
-</section>
-
-<!-- APPS LIST -->
-<section id="apps" class="py-24 px-6 bg-black/40 backdrop-blur-xl">
-    <h2 class="text-4xl font-bold neon-title text-center mb-16">Our Applications</h2>
+<!-- APPS -->
+<section id="apps" class="py-24 px-6">
+    <h2 class="neon text-4xl text-center mb-14">Our Applications</h2>
 
     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
 
         <!-- Alfaaz-e-Dil -->
-        <div class="glass-card p-6">
-            <img src="./alfaz.png" class="w-20 h-20 mx-auto mb-4 rounded-xl" />
-            <h3 class="text-xl font-bold mb-2">Alfaaz-e-Dil</h3>
-            <p class="text-gray-300 text-sm mb-4">Poetry & Quotes app that touches the heart.</p>
-            <a href="#" class="block text-center bg-purple-600 py-2 rounded-xl hover:bg-purple-700">
-                Download
+        <div class="glass p-6 reveal">
+            <div class="flex items-center gap-4">
+                <img src="./alfaz.png" class="w-16 h-16 rounded-xl" />
+                <div>
+                    <h3 class="text-xl font-bold">Alfaaz-e-Dil</h3>
+                    <p class="text-gray-300 text-sm">Beautiful Shayari & Quotes.</p>
+                </div>
+            </div>
+            <a href="#" class="block mt-6 bg-purple-600 py-2 text-center rounded-xl hover:bg-purple-700">
+                <i class="fab fa-google-play mr-2"></i> Install
             </a>
         </div>
 
-        <!-- ALL COMING SOON APPS -->
+        <!-- Coming Soon Templates -->
         <script>
-            const apps = [
-                { img:"agemaster.png", name:"Age Master", desc:"Accurate age & event calculator." },
-                { img:"tictactoe.png", name:"Tic Tac Toe Pro", desc:"Classic game reinvented modern style." },
-                { img:"qrninja.png", name:"QR Ninja", desc:"Fast QR & Barcode scanner." },
-                { img:"flashstorm.png", name:"Flash Storm", desc:"Bright flashlight with SOS mode." },
-                { img:"funnysounds.png", name:"Funny Sounds", desc:"High-quality prank sound library." },
-                { img:"fontmagic.png", name:"Font Magic", desc:"Stylish fonts & text designer." },
-                { img:"bmihealthfit.png", name:"BMI Health Fit", desc:"Smart BMI & health tracking." }
-            ];
+        const upcoming = [
+            {img:"agemaster.png",name:"Age Master",desc:"Age & birthday calculator."},
+            {img:"tictactoe.png",name:"Tic Tac Toe Pro",desc:"Modern classic game."},
+            {img:"qrninja.png",name:"QR Ninja",desc:"Fast QR/Barcode scanner."},
+            {img:"flashstorm.png",name:"Flash Storm",desc:"Super bright flashlight."},
+            {img:"funnysounds.png",name:"Funny Sounds",desc:"High-quality prank sounds."},
+            {img:"fontmagic.png",name:"Font Magic",desc:"Stylish text creator."},
+            {img:"bmihealthfit.png",name:"BMI Health Fit",desc:"Smart BMI tracker."},
+        ];
         </script>
 
-        <div id="comingSoonApps" class="contents"></div>
+        <div id="autoApps"></div>
 
         <script>
-            const container = document.getElementById("comingSoonApps");
-            apps.forEach(app => {
-                container.innerHTML += `
-                    <div class="glass-card p-6 opacity-80">
-                        <img src="./${app.img}" class="w-20 h-20 mx-auto mb-4 rounded-xl" />
-                        <h3 class="text-xl font-bold mb-2">${app.name}</h3>
-                        <p class="text-gray-300 text-sm mb-4">${app.desc}</p>
-                        <span class="block text-center py-2 rounded-xl bg-gray-700/40 border border-gray-500 text-gray-300">
-                            Coming Soon
-                        </span>
+        let out="";
+        upcoming.forEach(a=>{
+            out+=`
+            <div class="glass p-6 reveal">
+                <div class="flex items-center gap-4">
+                    <img src="./${a.img}" class="w-16 h-16 rounded-xl"/>
+                    <div>
+                        <h3 class="text-xl font-bold">${a.name}</h3>
+                        <p class="text-gray-300 text-sm">${a.desc}</p>
                     </div>
-                `;
-            });
+                </div>
+                <span class="block mt-6 py-2 rounded-xl text-center bg-gray-700/40 border border-gray-500 text-gray-300">
+                    Coming Soon
+                </span>
+            </div>`;
+        });
+        document.getElementById("autoApps").innerHTML = out;
         </script>
     </div>
 </section>
 
 <!-- FOUNDER -->
 <section id="founder" class="py-24 px-6 max-w-5xl mx-auto">
-    <h2 class="text-4xl font-bold neon-title text-center mb-16">Founder</h2>
+    <h2 class="neon text-4xl text-center mb-14">Founder</h2>
 
-    <div class="glass-card p-10 flex flex-col md:flex-row items-center gap-10">
+    <div class="glass p-10 flex flex-col md:flex-row gap-10 reveal">
+        <img src="./founder.png" class="w-56 rounded-2xl border border-purple-500/40 shadow-xl">
 
-        <img src="./founder.png" class="w-56 rounded-2xl shadow-xl border border-purple-500/40" />
-
-        <div class="text-gray-300 leading-relaxed text-lg">
+        <div class="leading-relaxed text-gray-300">
             <h3 class="text-2xl font-bold text-purple-400">Mohanraj R Devendra</h3>
             <p class="text-sm text-purple-300 mb-4">Founder & CEO – Adinova Labs</p>
 
             <p>
-                Coming from a humble middle-class background, Mohanraj built Adinova Labs entirely 
-                through self-learning — without formal classes, training, or academy support.  
-                He started learning app development in 2023 and by 2026, he transformed his passion 
-                into a full suite of Android applications.
-            </p>
-            <br/>
+                A self-taught developer from a humble middle-class background, Mohanraj built
+                Adinova Labs through pure passion and determination — without any classes or academy.
+            </p><br>
+
             <p>
-                His mission is clear:  
-                <strong>“Create apps that simplify life — and build a tech brand people trust.”</strong>
+                Starting his journey in 2023, he transformed his ideas into real apps by 2026.
+                His mission is simple:
+                <span class="text-purple-300 font-semibold">
+                    "Build apps that make everyday life easier."
+                </span>
             </p>
         </div>
     </div>
 </section>
 
 <!-- CONTACT -->
-<section id="contact" class="py-24 px-6 text-center">
-    <h2 class="text-4xl font-bold neon-title mb-8">Contact</h2>
-
-    <p class="text-gray-300 mb-6">Have questions or collaborations?</p>
-
+<section id="contact" class="py-24 text-center reveal">
+    <h2 class="neon text-4xl mb-6">Contact</h2>
+    <p class="text-gray-300 mb-4">For queries or collaboration:</p>
     <a href="mailto:adinovalabs@zohomail.in"
        class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-bold">
-        adinovalabs@zohomail.in
+       adinovalabs@zohomail.in
     </a>
 </section>
 
 <!-- FOOTER -->
-<footer class="py-10 bg-black/50 text-center text-gray-400 border-t border-white/10">
-    <p>&copy; 2026 Adinova Labs. All Rights Reserved.</p>
+<footer class="py-10 text-center text-gray-400 bg-black/40 border-t border-white/10">
+    &copy; 2026 Adinova Labs
+
+    <div class="mt-4 flex justify-center gap-10 text-sm">
+        <span onclick="openModal('privacy')" class="cursor-pointer hover:text-purple-400">
+            Privacy Policy
+        </span>
+        <span onclick="openModal('terms')" class="cursor-pointer hover:text-purple-400">
+            Terms & Conditions
+        </span>
+    </div>
 </footer>
+
+<!-- LEGAL MODAL -->
+<div id="modal" class="fixed hidden inset-0 z-50 bg-black/70 backdrop-blur-md p-6">
+    <div class="bg-white text-black max-w-3xl mx-auto p-8 rounded-2xl relative">
+        <span onclick="closeModal()" class="absolute right-6 top-4 text-2xl cursor-pointer">&times;</span>
+        <div id="modalText"></div>
+    </div>
+</div>
+
+<script>
+const legal={
+privacy:`<h2 class='text-3xl font-bold mb-4'>Privacy Policy</h2>
+<p>We do NOT collect personal data. Ads served by AdMob may collect device identifiers.</p>
+<p>Email: adinovalabs@zohomail.in</p>`,
+terms:`<h2 class='text-3xl font-bold mb-4'>Terms & Conditions</h2>
+<p>Apps are for personal use only. All assets belong to Adinova Labs.</p>
+<p>Email: adinovalabs@zohomail.in</p>`
+};
+function openModal(t){
+    document.getElementById("modalText").innerHTML=legal[t];
+    document.getElementById("modal").classList.remove("hidden");
+}
+function closeModal(){
+    document.getElementById("modal").classList.add("hidden");
+}
+
+/* Scroll Reveal */
+window.addEventListener("scroll",()=>{
+    document.querySelectorAll(".reveal").forEach(el=>{
+        const top = el.getBoundingClientRect().top;
+        if(top < window.innerHeight - 50) el.classList.add("active");
+    });
+});
+</script>
 
 </body>
 </html>
