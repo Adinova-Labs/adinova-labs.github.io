@@ -6,15 +6,8 @@
     <title>Adinova Labs | Premium Android Development</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <style>
-        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap');
-        body { font-family: 'Inter', sans-serif; scroll-behavior: smooth; }
-        .hero-gradient { background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%); }
-        .glass-card { background: rgba(255, 255, 255, 0.03); backdrop-filter: blur(10px); border: 1px solid rgba(255, 255, 255, 0.1); }
-        .app-card { transition: transform 0.3s ease; }
-        .app-card:hover { transform: translateY(-5px); }
-    </style>
 </head>
+
 <body class="bg-gray-50 text-gray-900">
 
     <!-- Navigation -->
@@ -28,175 +21,34 @@
                     <span class="text-xl font-bold tracking-tight text-gray-900">Adinova Labs</span>
                 </div>
                 <div class="hidden md:flex space-x-8 text-sm font-medium">
-                    <a href="#home" class="hover:text-indigo-600 transition">Home</a>
-                    <a href="#about" class="hover:text-indigo-600 transition">About</a>
-                    <a href="#apps" class="hover:text-indigo-600 transition">Our Apps</a>
-                    <a href="#contact" class="hover:text-indigo-600 transition">Contact</a>
+                    <a href="index.html" class="hover:text-indigo-600 transition">Home</a>
+                    <a href="about.html" class="hover:text-indigo-600 transition">About</a>
+                    <a href="apps.html" class="hover:text-indigo-600 transition">Our Apps</a>
+                    <a href="contact.html" class="hover:text-indigo-600 transition">Contact</a>
                 </div>
-                <button onclick="document.getElementById('apps').scrollIntoView()" class="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition">
+                <a href="apps.html" class="bg-indigo-600 text-white px-5 py-2 rounded-full text-sm font-semibold hover:bg-indigo-700 transition">
                     Explore Apps
-                </button>
+                </a>
             </div>
         </div>
     </nav>
 
-    <!-- 1. Home Page -->
-    <section id="home" class="hero-gradient pt-32 pb-20 px-4 text-white">
+    <!-- Home Section -->
+    <section class="hero-gradient pt-32 pb-20 px-4 text-white" style="background: linear-gradient(135deg,#0f172a,#1e293b)">
         <div class="max-w-7xl mx-auto text-center">
-            <h1 class="text-4xl md:text-6xl font-extrabold mb-6">Crafting Premium <span class="text-indigo-400">Android Experiences</span></h1>
-            <p class="text-lg md:text-xl text-gray-300 max-w-2xl mx-auto mb-10">
+            <h1 class="text-5xl font-extrabold mb-6">Crafting Premium <span class="text-indigo-400">Android Experiences</span></h1>
+            <p class="text-lg text-gray-300 max-w-2xl mx-auto mb-10">
                 At Adinova Labs, we build fast, secure, and user-centric mobile applications designed to empower and entertain.
             </p>
-            <div class="flex flex-col sm:flex-row justify-center gap-4">
-                <a href="#apps" class="bg-indigo-500 hover:bg-indigo-600 px-8 py-3 rounded-xl font-bold text-lg transition shadow-lg">View Our Portfolio</a>
-                <a href="#about" class="bg-white/10 hover:bg-white/20 border border-white/20 px-8 py-3 rounded-xl font-bold text-lg transition">Our Mission</a>
-            </div>
-            <div class="mt-16 flex justify-center gap-8 opacity-50 grayscale contrast-125">
-                <i class="fab fa-android text-4xl"></i>
-                <i class="fab fa-google-play text-4xl"></i>
-                <i class="fas fa-code text-4xl"></i>
-            </div>
+
+            <a href="apps.html" class="bg-indigo-500 hover:bg-indigo-600 px-10 py-4 rounded-xl font-bold text-lg transition shadow-lg">
+                View Our Apps
+            </a>
         </div>
     </section>
 
-    <!-- 2. About Page -->
-    <section id="about" class="py-20 px-4">
-        <div class="max-w-7xl mx-auto">
-            <div class="grid md:grid-cols-2 gap-12 items-center">
-                <div>
-                    <h2 class="text-3xl font-bold mb-6">Our Story & Mission</h2>
-                    <p class="text-gray-600 leading-relaxed mb-4">
-                        Adinova Labs was founded with a singular focus: to elevate the standard of utility and lifestyle apps on the Android platform. We believe that technology should be intuitive, aesthetic, and helpful.
-                    </p>
-                    <p class="text-gray-600 leading-relaxed mb-6">
-                        Our vision is to build a diverse ecosystem of apps that simplify daily tasks and provide meaningful content to users across the globe.
-                    </p>
-                    <div class="grid grid-cols-2 gap-4">
-                        <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <h4 class="font-bold text-indigo-600">Innovation</h4>
-                            <p class="text-sm text-gray-500">Always iterating and improving.</p>
-                        </div>
-                        <div class="p-4 bg-white rounded-xl shadow-sm border border-gray-100">
-                            <h4 class="font-bold text-indigo-600">Privacy</h4>
-                            <p class="text-sm text-gray-500">User data security is priority.</p>
-                        </div>
-                    </div>
-                </div>
-                <div class="bg-indigo-50 rounded-3xl p-8 border border-indigo-100">
-                    <h3 class="text-2xl font-bold text-indigo-900 mb-4">Core Values</h3>
-                    <ul class="space-y-4">
-                        <li class="flex items-start">
-                            <span class="bg-indigo-600 text-white p-1 rounded-full mr-3 mt-1"><i class="fas fa-check text-[10px]"></i></span>
-                            <p><strong>Performance:</strong> Apps that load fast and run smooth on all devices.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-indigo-600 text-white p-1 rounded-full mr-3 mt-1"><i class="fas fa-check text-[10px]"></i></span>
-                            <p><strong>UI/UX Excellence:</strong> Clean interfaces and easy navigation.</p>
-                        </li>
-                        <li class="flex items-start">
-                            <span class="bg-indigo-600 text-white p-1 rounded-full mr-3 mt-1"><i class="fas fa-check text-[10px]"></i></span>
-                            <p><strong>Integrity:</strong> Honest ad practices and clear terms of service.</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3. Our Apps Page -->
-    <section id="apps" class="py-20 px-4 bg-gray-100">
-        <div class="max-w-7xl mx-auto text-center mb-16">
-            <h2 class="text-3xl font-bold mb-4">Our Applications</h2>
-            <p class="text-gray-600">Discover our collection of premium Android apps.</p>
-        </div>
-        <div class="max-w-7xl mx-auto grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
-            <!-- Featured App: Alfaaz-e-Dil -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border-2 border-indigo-500 app-card">
-                <div class="flex justify-between items-start mb-4">
-                    <div class="w-16 h-16 bg-red-100 rounded-2xl flex items-center justify-center text-red-500 text-3xl">
-                        <i class="fas fa-heart"></i>
-                    </div>
-                    <span class="bg-green-100 text-green-700 text-xs font-bold px-3 py-1 rounded-full">LIVE NOW</span>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Alfaaz-e-Dil</h3>
-                <p class="text-gray-600 text-sm mb-6">A curated collection of beautiful poetry and quotes. Express your heart's voice through words that resonate.</p>
-                <ul class="text-sm text-gray-500 mb-6 space-y-2">
-                    <li><i class="fas fa-star text-yellow-400 mr-2"></i> Daily Updates</li>
-                    <li><i class="fas fa-star text-yellow-400 mr-2"></i> Easy Share Feature</li>
-                    <li><i class="fas fa-star text-yellow-400 mr-2"></i> Offline Mode Support</li>
-                </ul>
-                <a href="#" class="block text-center bg-gray-900 text-white py-3 rounded-xl font-semibold hover:bg-black transition">
-                    <i class="fab fa-google-play mr-2"></i> Download App
-                </a>
-            </div>
-
-            <!-- Coming Soon Apps -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 app-card opacity-80">
-                <div class="w-16 h-16 bg-blue-100 rounded-2xl flex items-center justify-center text-blue-500 text-3xl mb-4">
-                    <i class="fas fa-gamepad"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Tic Tac Toe Pro</h3>
-                <p class="text-gray-600 text-sm mb-6">Classic game with modern AI and multiplayer modes. Sleek design, zero lag.</p>
-                <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">COMING SOON</span>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 app-card opacity-80">
-                <div class="w-16 h-16 bg-orange-100 rounded-2xl flex items-center justify-center text-orange-500 text-3xl mb-4">
-                    <i class="fas fa-birthday-cake"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Age Master</h3>
-                <p class="text-gray-600 text-sm mb-6">Precise age calculations, upcoming birthdays, and anniversary trackers.</p>
-                <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">COMING SOON</span>
-            </div>
-
-            <!-- Repeat for other apps -->
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 app-card opacity-80">
-                <div class="w-16 h-16 bg-yellow-100 rounded-2xl flex items-center justify-center text-yellow-500 text-3xl mb-4">
-                    <i class="fas fa-bolt"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Flash Storm</h3>
-                <p class="text-gray-600 text-sm mb-6">The brightest flashlight app with SOS and strobe features.</p>
-                <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">COMING SOON</span>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 app-card opacity-80">
-                <div class="w-16 h-16 bg-pink-100 rounded-2xl flex items-center justify-center text-pink-500 text-3xl mb-4">
-                    <i class="fas fa-music"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">Funny Sounds</h3>
-                <p class="text-gray-600 text-sm mb-6">Prank your friends with a massive library of high-quality funny audio clips.</p>
-                <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">COMING SOON</span>
-            </div>
-
-            <div class="bg-white rounded-2xl p-6 shadow-sm border border-gray-200 app-card opacity-80">
-                <div class="w-16 h-16 bg-green-100 rounded-2xl flex items-center justify-center text-green-500 text-3xl mb-4">
-                    <i class="fas fa-qrcode"></i>
-                </div>
-                <h3 class="text-xl font-bold mb-2">QR Ninja</h3>
-                <p class="text-gray-600 text-sm mb-6">Lightning fast QR and Barcode scanner with history and generator features.</p>
-                <span class="inline-block bg-gray-100 text-gray-600 text-xs font-bold px-3 py-1 rounded-full">COMING SOON</span>
-            </div>
-        </div>
-    </section>
-
-    <!-- 4. Contact Page -->
-    <section id="contact" class="py-20 px-4">
-        <div class="max-w-3xl mx-auto text-center">
-            <h2 class="text-3xl font-bold mb-4">Get in Touch</h2>
-            <p class="text-gray-600 mb-10">Have questions about our apps or interested in collaborations? Reach out to us.</p>
-            <div class="bg-white p-8 rounded-3xl shadow-lg border border-gray-100">
-                <div class="flex items-center justify-center space-x-4 mb-6 text-indigo-600">
-                    <i class="fas fa-envelope text-2xl"></i>
-                    <span class="text-xl font-semibold">adinovalabs@zohomail.in</span>
-                </div>
-                <p class="text-sm text-gray-500 mb-8">We usually respond within 24-48 business hours.</p>
-                <a href="mailto:adinovalabs@zohomail.in" class="inline-block bg-indigo-600 text-white px-10 py-3 rounded-xl font-bold hover:bg-indigo-700 transition">Send Email</a>
-            </div>
-        </div>
-    </section>
-
-    <!-- 5 & 6. Privacy & Terms -->
-    <footer class="bg-gray-900 text-gray-400 py-12 px-4 border-t border-gray-800">
+    <!-- Footer -->
+    <footer class="bg-gray-900 text-gray-400 py-12 px-4 border-t border-gray-800 mt-12">
         <div class="max-w-7xl mx-auto text-center md:text-left grid md:grid-cols-2 gap-8 items-center">
             <div>
                 <p class="text-white font-bold text-lg mb-2">Adinova Labs</p>
@@ -204,70 +56,11 @@
                 <p class="text-xs">&copy; 2024 Adinova Labs. All rights reserved.</p>
             </div>
             <div class="flex justify-center md:justify-end space-x-6 text-sm">
-                <a href="javascript:void(0)" onclick="toggleModal('privacy')" class="hover:text-white transition">Privacy Policy</a>
-                <a href="javascript:void(0)" onclick="toggleModal('terms')" class="hover:text-white transition">Terms & Conditions</a>
+                <a href="privacy.html" class="hover:text-white transition">Privacy Policy</a>
+                <a href="terms.html" class="hover:text-white transition">Terms & Conditions</a>
             </div>
         </div>
     </footer>
 
-    <!-- Modals for Legal Content -->
-    <div id="legalModal" class="fixed inset-0 z-[100] hidden bg-black/50 backdrop-blur-sm p-4 overflow-y-auto">
-        <div class="bg-white max-w-4xl mx-auto my-10 rounded-2xl p-8 shadow-2xl relative">
-            <button onclick="toggleModal()" class="absolute top-4 right-4 text-gray-400 hover:text-gray-900 text-2xl">
-                <i class="fas fa-times"></i>
-            </button>
-            <div id="modalContent" class="prose prose-sm max-w-none text-gray-700">
-                <!-- Content Injected via JS -->
-            </div>
-        </div>
-    </div>
-
-    <script>
-        const content = {
-            privacy: `
-                <h2 class="text-2xl font-bold mb-4">Privacy Policy</h2>
-                <p class="mb-4">At <strong>Adinova Labs</strong>, we prioritize the privacy of our visitors and users. This document outlines the types of information collected and how it is used.</p>
-                <h4 class="font-bold mt-4">1. Data Collection</h4>
-                <p>We do not collect any personal identification information (PII) such as your name, address, or phone number directly. Our apps are built to be non-intrusive.</p>
-                <h4 class="font-bold mt-4">2. Advertising & AdMob</h4>
-                <p>We use Google AdMob for advertisements. AdMob may use device identifiers (like Android Advertising ID) to serve personalized ads. You can manage these settings in your device's Google settings.</p>
-                <h4 class="font-bold mt-4">3. Log Files</h4>
-                <p>Standard for all apps, we use log files for error reporting and performance monitoring to improve the user experience.</p>
-                <h4 class="font-bold mt-4">4. Compliance</h4>
-                <p>We strictly follow Google Play Store policies. For more on Google's data usage, visit: <a href="https://policies.google.com/privacy" class="text-indigo-600 underline" target="_blank">Google Privacy & Terms</a>.</p>
-                <h4 class="font-bold mt-4">5. Contact</h4>
-                <p>Email: adinovalabs@zohomail.in</p>
-            `,
-            terms: `
-                <h2 class="text-2xl font-bold mb-4">Terms & Conditions</h2>
-                <p class="mb-4">By downloading and using apps from Adinova Labs, you agree to these terms.</p>
-                <h4 class="font-bold mt-4">1. App Usage</h4>
-                <p>Users must not attempt to decompile, reverse engineer, or modify our applications. Apps are provided "as-is" for personal, non-commercial use.</p>
-                <h4 class="font-bold mt-4">2. Content Ownership</h4>
-                <p>All graphics, code, and original content within our apps (including Alfaaz-e-Dil) are the property of Adinova Labs unless otherwise stated.</p>
-                <h4 class="font-bold mt-4">3. Advertising Behaviour</h4>
-                <p>Our apps may contain advertisements. Users are responsible for any data charges incurred while using the apps.</p>
-                <h4 class="font-bold mt-4">4. Liability</h4>
-                <p>Adinova Labs is not liable for any data loss or device issues resulting from the use of our applications.</p>
-                <h4 class="font-bold mt-4">5. Updates</h4>
-                <p>We reserve the right to change these terms or modify app features at any time.</p>
-                <h4 class="font-bold mt-4">6. Contact</h4>
-                <p>Email: adinovalabs@zohomail.in</p>
-            `
-        };
-
-        function toggleModal(type) {
-            const modal = document.getElementById('legalModal');
-            const container = document.getElementById('modalContent');
-            if (type) {
-                container.innerHTML = content[type];
-                modal.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            } else {
-                modal.classList.add('hidden');
-                document.body.style.overflow = 'auto';
-            }
-        }
-    </script>
 </body>
 </html>
