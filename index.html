@@ -1,228 +1,464 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Adinova Labs – Premium Android Apps & Tools</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adinova Labs | Premium Android Experiences</title>
+    <meta name="description" content="Crafting beautiful, meaningful, and premium Android apps.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <script>
+        tailwind.config = {
+            darkMode: 'class',
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            dark: '#050505',
+                            glass: 'rgba(255, 255, 255, 0.05)',
+                            glassHover: 'rgba(255, 255, 255, 0.1)',
+                            neon: '#a855f7', // Purple-500
+                            neonGlow: '#d8b4fe',
+                        }
+                    },
+                    animation: {
+                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'float': 'float 6s ease-in-out infinite',
+                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                    },
+                    keyframes: {
+                        fadeInUp: {
+                            '0%': { opacity: '0', transform: 'translateY(20px)' },
+                            '100%': { opacity: '1', transform: 'translateY(0)' },
+                        },
+                        float: {
+                            '0%, 100%': { transform: 'translateY(0)' },
+                            '50%': { transform: 'translateY(-10px)' },
+                        }
+                    }
+                }
+            }
+        }
+    </script>
 
-<script src="https://cdn.tailwindcss.com"></script>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+    <style type="text/tailwindcss">
+        @layer utilities {
+            .glass-panel {
+                @apply bg-brand-glass backdrop-blur-xl border border-white/10 shadow-2xl;
+            }
+            .glass-btn {
+                @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 border border-white/20 bg-white/5 hover:bg-brand-neon hover:border-brand-neon hover:text-white hover:shadow-[0_0_20px_rgba(168,85,247,0.5)];
+            }
+            .neon-text {
+                @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)];
+            }
+            .section-padding {
+                @apply py-24 px-6 md:px-12 lg:px-24;
+            }
+        }
+        
+        /* Custom Scrollbar */
+        ::-webkit-scrollbar {
+            width: 8px;
+        }
+        ::-webkit-scrollbar-track {
+            background: #050505;
+        }
+        ::-webkit-scrollbar-thumb {
+            background: #333;
+            border-radius: 4px;
+        }
+        ::-webkit-scrollbar-thumb:hover {
+            background: #a855f7;
+        }
 
-<style>
-body {
-    font-family: 'Inter', sans-serif;
-    background: linear-gradient(180deg,#07000f,#0c0018,#000);
-    color: white;
-    overflow-x: hidden;
-}
-
-/* Neon Glow */
-.neon {
-    color: #c084fc;
-    text-shadow: 0 0 10px #a855f7,0 0 25px #7e22ce;
-}
-
-/* Glass Card */
-.glass {
-    background: rgba(255,255,255,0.05);
-    border: 1px solid rgba(255,255,255,0.12);
-    backdrop-filter: blur(12px);
-    border-radius: 20px;
-    transition: .3s;
-}
-.glass:hover {
-    box-shadow: 0 0 25px rgba(192,132,252,.35);
-    border-color: rgba(192,132,252,.4);
-    transform: translateY(-6px);
-}
-
-/* Page Fade Animation */
-.fade {
-    animation: fadeIn 1.2s ease forwards;
-    opacity: 0;
-}
-@keyframes fadeIn {
-    to { opacity: 1; }
-}
-
-/* Scroll-up animation */
-.reveal {opacity:0; transform:translateY(30px); transition:1s;}
-.reveal.active {opacity:1; transform:translateY(0);}
-</style>
+        body {
+            background-color: #050505;
+            color: #e2e8f0;
+            overflow-x: hidden;
+        }
+        
+        /* Background Glows */
+        .glow-blob {
+            position: absolute;
+            filter: blur(80px);
+            z-index: -1;
+            opacity: 0.4;
+        }
+    </style>
 </head>
+<body class="antialiased relative">
 
-<body>
-
-<!-- NAV -->
-<nav class="fixed top-0 w-full z-50 bg-black/40 backdrop-blur-md border-b border-white/10">
-    <div class="max-w-7xl mx-auto flex justify-between items-center h-16 px-6">
-        <div class="flex gap-3 items-center">
-            <div class="w-10 h-10 bg-purple-600 rounded-xl flex items-center justify-center text-2xl font-bold">A</div>
-            <span class="font-bold text-lg tracking-wide">Adinova Labs</span>
-        </div>
-        <div class="hidden md:flex gap-8 text-sm">
-            <a href="#home" class="hover:text-purple-400">Home</a>
-            <a href="#apps" class="hover:text-purple-400">Apps</a>
-            <a href="#founder" class="hover:text-purple-400">Founder</a>
-            <a href="#contact" class="hover:text-purple-400">Contact</a>
-        </div>
-        <a href="#apps" class="px-4 py-2 bg-purple-600 rounded-xl hover:bg-purple-700">Explore</a>
+    <!-- Background Ambience -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none">
+        <div class="glow-blob w-96 h-96 bg-purple-900/40 top-0 left-0 rounded-full mix-blend-screen animate-pulse-slow"></div>
+        <div class="glow-blob w-[500px] h-[500px] bg-blue-900/30 bottom-0 right-0 rounded-full mix-blend-screen animate-pulse-slow" style="animation-delay: 2s;"></div>
     </div>
-</nav>
 
-<!-- HERO -->
-<section id="home" class="pt-32 pb-40 text-center fade">
-    <h1 class="neon text-5xl md:text-6xl font-extrabold">Crafting Premium Apps</h1>
-    <p class="text-gray-300 mt-6 text-lg max-w-xl mx-auto">
-        Futuristic Android apps built with creativity, precision and innovation.
-    </p>
-    <div class="mt-10 flex justify-center gap-6">
-        <a href="#apps" class="px-8 py-3 bg-purple-600 rounded-xl hover:bg-purple-700 font-bold">Browse Apps</a>
-        <a href="#founder" class="px-8 py-3 border border-purple-500 rounded-xl hover:bg-purple-500/20 font-bold">Meet Founder</a>
-    </div>
-</section>
-
-<!-- APPS -->
-<section id="apps" class="py-24 px-6">
-    <h2 class="neon text-4xl text-center mb-14">Our Applications</h2>
-
-    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-10 max-w-6xl mx-auto">
-
-        <!-- Alfaaz-e-Dil -->
-        <div class="glass p-6 reveal">
-            <div class="flex items-center gap-4">
-                <img src="./alfaz.png" class="w-16 h-16 rounded-xl" />
-                <div>
-                    <h3 class="text-xl font-bold">Alfaaz-e-Dil</h3>
-                    <p class="text-gray-300 text-sm">Beautiful Shayari & Quotes.</p>
-                </div>
+    <!-- Navigation (Simple Top Bar) -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+        <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
+            <div class="flex items-center gap-2">
+                <div class="w-8 h-8 rounded bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/30">A</div>
+                <span class="font-bold text-lg tracking-wide text-white">ADINOVA LABS</span>
             </div>
-            <a href="#" class="block mt-6 bg-purple-600 py-2 text-center rounded-xl hover:bg-purple-700">
-                <i class="fab fa-google-play mr-2"></i> Install
-            </a>
+            <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
+                <a href="#about" class="hover:text-brand-neon transition-colors">About</a>
+                <a href="#apps" class="hover:text-brand-neon transition-colors">Apps</a>
+                <a href="#contact" class="hover:text-brand-neon transition-colors">Contact</a>
+            </div>
         </div>
+    </nav>
 
-        <!-- Coming Soon Templates -->
-        <script>
-        const upcoming = [
-            {img:"agemaster.png",name:"Age Master",desc:"Age & birthday calculator."},
-            {img:"tictactoe.png",name:"Tic Tac Toe Pro",desc:"Modern classic game."},
-            {img:"qrninja.png",name:"QR Ninja",desc:"Fast QR/Barcode scanner."},
-            {img:"flashstorm.png",name:"Flash Storm",desc:"Super bright flashlight."},
-            {img:"funnysounds.png",name:"Funny Sounds",desc:"High-quality prank sounds."},
-            {img:"fontmagic.png",name:"Font Magic",desc:"Stylish text creator."},
-            {img:"bmihealthfit.png",name:"BMI Health Fit",desc:"Smart BMI tracker."},
-        ];
-        </script>
+    <!-- 1️⃣ HERO SECTION -->
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
+        
+        <div class="space-y-8 max-w-4xl relative z-10 animate-fade-in-up">
+            <!-- Logo Box -->
+            <div class="w-24 h-24 mx-auto glass-panel rounded-2xl flex items-center justify-center mb-6 animate-float">
+                <span class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-purple-400 via-pink-400 to-white">A</span>
+            </div>
 
-        <div id="autoApps"></div>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
+                Crafting Premium <br>
+                <span class="neon-text">Android Experiences</span>
+            </h1>
+            
+            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light">
+                Beautifully designed apps made with passion, precision, and purpose. 
+                Redefining the standard of mobile simplicity.
+            </p>
 
-        <script>
-        let out="";
-        upcoming.forEach(a=>{
-            out+=`
-            <div class="glass p-6 reveal">
-                <div class="flex items-center gap-4">
-                    <img src="./${a.img}" class="w-16 h-16 rounded-xl"/>
-                    <div>
-                        <h3 class="text-xl font-bold">${a.name}</h3>
-                        <p class="text-gray-300 text-sm">${a.desc}</p>
+            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
+                <a href="#apps" class="glass-btn">Explore Apps</a>
+                <button onclick="openModal('privacyModal')" class="px-6 py-3 rounded-full font-semibold text-gray-400 hover:text-white transition-colors">Privacy Policy</button>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2️⃣ ABOUT SECTION (Founder) -->
+    <section id="about" class="section-padding relative">
+        <div class="max-w-6xl mx-auto">
+            <div class="glass-panel rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
+                
+                <!-- Founder Image -->
+                <div class="relative group">
+                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+                    <div class="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-2 border-white/10">
+                        <img src="founder.png" alt="Mohanraj R Devendra" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Mohanraj+R&background=0D8ABC&color=fff&size=256'">
                     </div>
                 </div>
-                <span class="block mt-6 py-2 rounded-xl text-center bg-gray-700/40 border border-gray-500 text-gray-300">
-                    Coming Soon
-                </span>
-            </div>`;
-        });
-        document.getElementById("autoApps").innerHTML = out;
-        </script>
-    </div>
-</section>
 
-<!-- FOUNDER -->
-<section id="founder" class="py-24 px-6 max-w-5xl mx-auto">
-    <h2 class="neon text-4xl text-center mb-14">Founder</h2>
+                <!-- Story -->
+                <div class="flex-1 text-center md:text-left">
+                    <h2 class="text-3xl font-bold mb-2">Mohanraj R Devendra</h2>
+                    <p class="text-brand-neon font-medium mb-6 uppercase tracking-wider text-sm">Founder & Lead Android Developer</p>
+                    
+                    <div class="space-y-4 text-gray-300 leading-relaxed">
+                        <p>
+                            Born into humble beginnings, Mohanraj forged his path not through privilege, but through relentless will. 
+                            Without mentors or academies, he mastered the art of code in the quiet hours of the night, fueled by pure passion and the boundless knowledge of the internet.
+                        </p>
+                        <p>
+                            From his first line of code in 2023 to the establishment of <strong class="text-white">Adinova Labs</strong> in 2026, his journey is a testament to self-taught mastery. 
+                            Today, he stands at the helm of a vision: to craft digital experiences that are not just functional, but profoundly beautiful—simplifying lives, one pixel at a time.
+                        </p>
+                    </div>
 
-    <div class="glass p-10 flex flex-col md:flex-row gap-10 reveal">
-        <img src="./founder.png" class="w-56 rounded-2xl border border-purple-500/40 shadow-xl">
-
-        <div class="leading-relaxed text-gray-300">
-            <h3 class="text-2xl font-bold text-purple-400">Mohanraj R Devendra</h3>
-            <p class="text-sm text-purple-300 mb-4">Founder & CEO – Adinova Labs</p>
-
-            <p>
-                A self-taught developer from a humble middle-class background, Mohanraj built
-                Adinova Labs through pure passion and determination — without any classes or academy.
-            </p><br>
-
-            <p>
-                Starting his journey in 2023, he transformed his ideas into real apps by 2026.
-                His mission is simple:
-                <span class="text-purple-300 font-semibold">
-                    "Build apps that make everyday life easier."
-                </span>
-            </p>
+                    <!-- Badges -->
+                    <div class="flex flex-wrap gap-3 mt-8 justify-center md:justify-start">
+                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Innovation</span>
+                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Quality</span>
+                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Privacy Focus</span>
+                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">UX First</span>
+                    </div>
+                </div>
+            </div>
         </div>
+    </section>
+
+    <!-- 3️⃣ OUR APPS GRID -->
+    <section id="apps" class="section-padding">
+        <div class="max-w-7xl mx-auto">
+            <h2 class="text-4xl font-bold text-center mb-16">Our <span class="neon-text">Portfolio</span></h2>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                
+                <!-- LIVE APP: Alfaaz-e-Dil -->
+                <div class="glass-panel rounded-2xl p-6 relative group hover:scale-[1.02] transition-all duration-300 hover:border-brand-neon/50">
+                    <div class="absolute top-4 right-4 bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 animate-pulse">LIVE</div>
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="alfaaz.png" alt="Icon" class="w-16 h-16 rounded-2xl shadow-lg group-hover:shadow-purple-500/20 transition-all" onerror="this.src='https://placehold.co/64x64/222/FFF?text=AD'">
+                        <div>
+                            <h3 class="font-bold text-xl">Alfaaz-e-Dil</h3>
+                            <p class="text-xs text-gray-400">Poetry & Lifestyle</p>
+                        </div>
+                    </div>
+                    <p class="text-gray-300 text-sm mb-6">A soulful collection of beautiful Shayari and quotes designed to touch your heart.</p>
+                    <button class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold text-sm shadow-lg shadow-purple-900/40 opacity-50 cursor-not-allowed">Install (Premium)</button>
+                </div>
+
+                <!-- COMING SOON APPS TEMPLATE -->
+                
+                <!-- Age Master -->
+                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="agemaster.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=AM'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">Age Master</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Precision age calculation with detailed insights.</p>
+                </div>
+
+                <!-- Tic Tac Toe Pro -->
+                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="tictactoe.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=TT'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">Tic Tac Toe Pro</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">The classic game reinvented with neon aesthetics.</p>
+                </div>
+
+                <!-- QR Ninja -->
+                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="qrninja.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=QR'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">QR Ninja</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Lightning fast QR code scanner and generator.</p>
+                </div>
+
+                <!-- Flash Storm -->
+                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="flashstorm.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FS'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">Flash Storm</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Ultimate flashlight utility with strobe effects.</p>
+                </div>
+
+                <!-- Funny Sounds -->
+                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="funnysounds.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FN'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">Funny Sounds</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Hilarious soundboard to prank your friends.</p>
+                </div>
+                
+                 <!-- Font Magic -->
+                 <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="fontmagic.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FM'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">Font Magic</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Stylish text generator for social media bio.</p>
+                </div>
+                
+                 <!-- BMI Health Fit -->
+                 <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
+                    <div class="flex items-center gap-4 mb-4">
+                        <img src="bmihealthfit.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=BMI'">
+                        <div>
+                            <h3 class="font-bold text-lg text-gray-200">BMI Health Fit</h3>
+                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
+                        </div>
+                    </div>
+                    <p class="text-gray-400 text-sm mb-4">Track your health goals with precise BMI metrics.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 4️⃣ CONTACT SECTION -->
+    <section id="contact" class="section-padding mb-20">
+        <div class="max-w-3xl mx-auto glass-panel rounded-3xl p-10 text-center relative overflow-hidden">
+            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+            
+            <h2 class="text-3xl font-bold mb-4">Let's Build the <span class="text-purple-400">Future</span></h2>
+            <p class="text-gray-400 mb-8">Have a query or a suggestion? Reach out directly to the lab.</p>
+            
+            <div class="inline-flex flex-col items-center gap-2">
+                <span class="text-sm text-gray-500 uppercase tracking-widest">Official Email</span>
+                <a href="mailto:adinovalabs@zohomail.in" class="text-xl md:text-2xl font-mono text-white hover:text-brand-neon transition-colors border-b border-white/10 pb-1">adinovalabs@zohomail.in</a>
+            </div>
+
+            <div class="mt-8">
+                <a href="mailto:adinovalabs@zohomail.in" class="glass-btn inline-block">Send Email</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-black">
+        <p>&copy; 2026 Adinova Labs. All Rights Reserved.</p>
+        <div class="flex justify-center gap-4 mt-4">
+            <button onclick="openModal('privacyModal')" class="hover:text-gray-300 transition-colors">Privacy Policy</button>
+            <span>•</span>
+            <button onclick="openModal('termsModal')" class="hover:text-gray-300 transition-colors">Terms & Conditions</button>
+        </div>
+    </footer>
+
+    <!-- 5️⃣ & 6️⃣ MODALS -->
+    
+    <!-- Modal Backdrop -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeAllModals()">
+        
+        <!-- Privacy Modal -->
+        <div id="privacyModal" class="bg-[#0f0f11] border border-white/10 w-full max-w-2xl rounded-2xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden shadow-2xl shadow-purple-900/20" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                <h3 class="text-2xl font-bold text-white">Privacy Policy</h3>
+                <button onclick="closeAllModals()" class="text-gray-400 hover:text-white bg-white/5 w-8 h-8 rounded-full flex items-center justify-center transition-colors">&times;</button>
+            </div>
+            <div class="space-y-4 text-gray-300 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scroll">
+                <p class="font-semibold text-white">Commitment to User Privacy</p>
+                <p>At Adinova Labs, privacy is paramount. We operate on a strict <strong>'no-data-collection'</strong> philosophy. We do not require account creation, nor do we harvest personal user data for our servers.</p>
+                
+                <p class="font-semibold text-white mt-4">Advertising & Identifiers</p>
+                <p>While our core services are free, we may utilize Google AdMob to support our development efforts. AdMob may collect standard mobile identifiers (like Android Advertising ID) solely for the purpose of serving ads. This is a standard industry practice.</p>
+
+                <p class="font-semibold text-white mt-4">Permissions</p>
+                <p>Our apps request only the absolute minimum permissions required for functionality (e.g., Camera for QR Ninja). We never access sensitive contacts, messages, or gallery photos without explicit user-initiated action.</p>
+
+                <p class="font-semibold text-white mt-4">User Control</p>
+                <p>You maintain full control. You may disable personalized advertising at any time through your Android device settings under Google > Ads.</p>
+                
+                <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500">
+                    Questions? Contact: <span class="text-brand-neon">adinovalabs@zohomail.in</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Terms Modal -->
+        <div id="termsModal" class="bg-[#0f0f11] border border-white/10 w-full max-w-2xl rounded-2xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden shadow-2xl shadow-purple-900/20" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+                <h3 class="text-2xl font-bold text-white">Terms & Conditions</h3>
+                <button onclick="closeAllModals()" class="text-gray-400 hover:text-white bg-white/5 w-8 h-8 rounded-full flex items-center justify-center transition-colors">&times;</button>
+            </div>
+            <div class="space-y-4 text-gray-300 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scroll">
+                <p class="font-semibold text-white">Usage License</p>
+                <p>By downloading or using Adinova Labs applications, you are granted a license for personal, non-commercial use only. The applications are provided "as-is" without warranties of any kind.</p>
+                
+                <p class="font-semibold text-white mt-4">Intellectual Property</p>
+                <p>All assets, including but not limited to UI designs, source code, graphics, and logos, are the exclusive property of Adinova Labs. <strong>Reverse engineering, decompiling, or cloning our applications is strictly prohibited</strong> and will be met with legal action.</p>
+
+                <p class="font-semibold text-white mt-4">Monetization</p>
+                <p>We reserve the right to display advertisements within our applications via third-party providers (Google AdMob) to sustain our development costs.</p>
+
+                <p class="font-semibold text-white mt-4">Liability</p>
+                <p>Adinova Labs is not liable for any direct or indirect damages arising from the misuse of our applications. Users are responsible for ensuring their device compatibility and security.</p>
+                
+                <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500">
+                    Legal Contact: <span class="text-brand-neon">adinovalabs@zohomail.in</span>
+                </div>
+            </div>
+        </div>
+
     </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contact" class="py-24 text-center reveal">
-    <h2 class="neon text-4xl mb-6">Contact</h2>
-    <p class="text-gray-300 mb-4">For queries or collaboration:</p>
-    <a href="mailto:adinovalabs@zohomail.in"
-       class="px-8 py-3 bg-purple-600 hover:bg-purple-700 rounded-xl font-bold">
-       adinovalabs@zohomail.in
-    </a>
-</section>
+    <!-- Logic -->
+    <script>
+        // Navbar Scroll Effect
+        window.addEventListener('scroll', () => {
+            const nav = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                nav.classList.add('bg-black/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+            } else {
+                nav.classList.remove('bg-black/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
+            }
+        });
 
-<!-- FOOTER -->
-<footer class="py-10 text-center text-gray-400 bg-black/40 border-t border-white/10">
-    &copy; 2026 Adinova Labs
+        // Modal Logic
+        const backdrop = document.getElementById('modalBackdrop');
+        const privacyModal = document.getElementById('privacyModal');
+        const termsModal = document.getElementById('termsModal');
 
-    <div class="mt-4 flex justify-center gap-10 text-sm">
-        <span onclick="openModal('privacy')" class="cursor-pointer hover:text-purple-400">
-            Privacy Policy
-        </span>
-        <span onclick="openModal('terms')" class="cursor-pointer hover:text-purple-400">
-            Terms & Conditions
-        </span>
-    </div>
-</footer>
+        function openModal(modalId) {
+            backdrop.classList.remove('hidden');
+            // Small delay to allow display:block to apply before opacity transition
+            setTimeout(() => {
+                backdrop.classList.remove('opacity-0');
+                
+                if (modalId === 'privacyModal') {
+                    privacyModal.classList.remove('hidden');
+                    // Separate timeout for transform animation
+                    setTimeout(() => {
+                        privacyModal.classList.remove('scale-95', 'opacity-0');
+                        privacyModal.classList.add('scale-100', 'opacity-100');
+                    }, 50);
+                } else {
+                    termsModal.classList.remove('hidden');
+                    setTimeout(() => {
+                        termsModal.classList.remove('scale-95', 'opacity-0');
+                        termsModal.classList.add('scale-100', 'opacity-100');
+                    }, 50);
+                }
+            }, 10);
+            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+        }
 
-<!-- LEGAL MODAL -->
-<div id="modal" class="fixed hidden inset-0 z-50 bg-black/70 backdrop-blur-md p-6">
-    <div class="bg-white text-black max-w-3xl mx-auto p-8 rounded-2xl relative">
-        <span onclick="closeModal()" class="absolute right-6 top-4 text-2xl cursor-pointer">&times;</span>
-        <div id="modalText"></div>
-    </div>
-</div>
+        function closeAllModals() {
+            backdrop.classList.add('opacity-0');
+            
+            // Animate modals out
+            privacyModal.classList.remove('scale-100', 'opacity-100');
+            privacyModal.classList.add('scale-95', 'opacity-0');
+            
+            termsModal.classList.remove('scale-100', 'opacity-100');
+            termsModal.classList.add('scale-95', 'opacity-0');
 
-<script>
-const legal={
-privacy:`<h2 class='text-3xl font-bold mb-4'>Privacy Policy</h2>
-<p>We do NOT collect personal data. Ads served by AdMob may collect device identifiers.</p>
-<p>Email: adinovalabs@zohomail.in</p>`,
-terms:`<h2 class='text-3xl font-bold mb-4'>Terms & Conditions</h2>
-<p>Apps are for personal use only. All assets belong to Adinova Labs.</p>
-<p>Email: adinovalabs@zohomail.in</p>`
-};
-function openModal(t){
-    document.getElementById("modalText").innerHTML=legal[t];
-    document.getElementById("modal").classList.remove("hidden");
-}
-function closeModal(){
-    document.getElementById("modal").classList.add("hidden");
-}
+            setTimeout(() => {
+                backdrop.classList.add('hidden');
+                privacyModal.classList.add('hidden');
+                termsModal.classList.add('hidden');
+                document.body.style.overflow = 'auto';
+            }, 300);
+        }
 
-/* Scroll Reveal */
-window.addEventListener("scroll",()=>{
-    document.querySelectorAll(".reveal").forEach(el=>{
-        const top = el.getBoundingClientRect().top;
-        if(top < window.innerHeight - 50) el.classList.add("active");
-    });
-});
-</script>
+        // Intersection Observer for scroll animations
+        const observerOptions = {
+            threshold: 0.1
+        };
 
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('animate-fade-in-up');
+                    entry.target.style.opacity = 1;
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, observerOptions);
+
+        // Apply observer to sections
+        document.querySelectorAll('section > div').forEach(el => {
+            el.style.opacity = 0; // Hide initially
+            observer.observe(el);
+        });
+
+    </script>
 </body>
 </html>
