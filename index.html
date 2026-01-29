@@ -6,7 +6,7 @@
     <title>Adinova Labs | Premium Android Experiences</title>
     <meta name="description" content="Crafting beautiful, meaningful, and premium Android apps.">
     <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;700;900&display=swap" rel="stylesheet">
     
     <script>
         tailwind.config = {
@@ -14,30 +14,35 @@
             theme: {
                 extend: {
                     fontFamily: {
-                        sans: ['Inter', 'sans-serif'],
+                        sans: ['Outfit', 'sans-serif'],
                     },
                     colors: {
                         brand: {
-                            dark: '#050505',
-                            glass: 'rgba(255, 255, 255, 0.05)',
-                            glassHover: 'rgba(255, 255, 255, 0.1)',
-                            neon: '#a855f7', // Purple-500
-                            neonGlow: '#d8b4fe',
+                            bg: '#050508', // Ultra dark background
+                            card: 'rgba(255, 255, 255, 0.03)',
+                            cardHover: 'rgba(255, 255, 255, 0.06)',
+                            neon: '#a855f7',
+                            accent: '#6366f1', // Indigo
                         }
                     },
                     animation: {
-                        'fade-in-up': 'fadeInUp 0.8s ease-out forwards',
+                        'fade-up': 'fadeUp 0.8s ease-out forwards',
                         'float': 'float 6s ease-in-out infinite',
-                        'pulse-slow': 'pulse 4s cubic-bezier(0.4, 0, 0.6, 1) infinite',
+                        'pulse-glow': 'pulseGlow 4s ease-in-out infinite',
+                        'spin-slow': 'spin 12s linear infinite',
                     },
                     keyframes: {
-                        fadeInUp: {
+                        fadeUp: {
                             '0%': { opacity: '0', transform: 'translateY(20px)' },
                             '100%': { opacity: '1', transform: 'translateY(0)' },
                         },
                         float: {
                             '0%, 100%': { transform: 'translateY(0)' },
                             '50%': { transform: 'translateY(-10px)' },
+                        },
+                        pulseGlow: {
+                            '0%, 100%': { opacity: '0.4' },
+                            '50%': { opacity: '0.8' },
                         }
                     }
                 }
@@ -47,350 +52,317 @@
 
     <style type="text/tailwindcss">
         @layer utilities {
-            .glass-panel {
-                @apply bg-brand-glass backdrop-blur-xl border border-white/10 shadow-2xl;
+            .glass-card {
+                @apply bg-brand-card backdrop-blur-xl border border-white/5 rounded-3xl shadow-xl transition-all duration-300 hover:border-brand-neon/30 hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:-translate-y-1;
             }
             .glass-btn {
-                @apply px-6 py-3 rounded-full font-semibold transition-all duration-300 border border-white/20 bg-white/5 hover:bg-brand-neon hover:border-brand-neon hover:text-white hover:shadow-[0_0_20px_rgba(168,85,247,0.5)];
+                @apply px-8 py-3 rounded-xl font-bold tracking-wide transition-all duration-300 border border-white/10 bg-white/5 hover:bg-white hover:text-black hover:shadow-[0_0_20px_rgba(255,255,255,0.4)];
             }
-            .neon-text {
-                @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 to-pink-300 drop-shadow-[0_0_10px_rgba(168,85,247,0.3)];
+            .neon-gradient-text {
+                @apply text-transparent bg-clip-text bg-gradient-to-r from-purple-400 via-pink-300 to-indigo-400;
             }
             .section-padding {
                 @apply py-24 px-6 md:px-12 lg:px-24;
             }
-        }
-        
-        /* Custom Scrollbar */
-        ::-webkit-scrollbar {
-            width: 8px;
-        }
-        ::-webkit-scrollbar-track {
-            background: #050505;
-        }
-        ::-webkit-scrollbar-thumb {
-            background: #333;
-            border-radius: 4px;
-        }
-        ::-webkit-scrollbar-thumb:hover {
-            background: #a855f7;
+            /* Custom Scrollbar */
+            ::-webkit-scrollbar { width: 6px; }
+            ::-webkit-scrollbar-track { background: #050508; }
+            ::-webkit-scrollbar-thumb { background: #333; border-radius: 10px; }
+            ::-webkit-scrollbar-thumb:hover { background: #a855f7; }
         }
 
         body {
-            background-color: #050505;
+            background-color: #050508;
             color: #e2e8f0;
-            overflow-x: hidden;
+            background-image: radial-gradient(circle at top center, #1e1b4b 0%, #050508 60%);
+            background-attachment: fixed;
         }
-        
-        /* Background Glows */
-        .glow-blob {
-            position: absolute;
-            filter: blur(80px);
-            z-index: -1;
-            opacity: 0.4;
+
+        /* Logo Special Styling */
+        .logo-box {
+            background: linear-gradient(135deg, rgba(255,255,255,0.1), rgba(255,255,255,0.01));
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.1);
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
     </style>
 </head>
-<body class="antialiased relative">
+<body class="antialiased relative selection:bg-brand-neon selection:text-white">
 
-    <!-- Background Ambience -->
-    <div class="fixed inset-0 overflow-hidden pointer-events-none">
-        <div class="glow-blob w-96 h-96 bg-purple-900/40 top-0 left-0 rounded-full mix-blend-screen animate-pulse-slow"></div>
-        <div class="glow-blob w-[500px] h-[500px] bg-blue-900/30 bottom-0 right-0 rounded-full mix-blend-screen animate-pulse-slow" style="animation-delay: 2s;"></div>
+    <!-- Ambient Background Elements -->
+    <div class="fixed inset-0 overflow-hidden pointer-events-none z-0">
+        <div class="absolute top-[-10%] left-[-10%] w-[500px] h-[500px] bg-purple-900/20 rounded-full blur-[120px] animate-pulse-glow"></div>
+        <div class="absolute bottom-[-10%] right-[-10%] w-[500px] h-[500px] bg-indigo-900/20 rounded-full blur-[120px] animate-pulse-glow" style="animation-delay: 2s;"></div>
     </div>
 
-    <!-- Navigation (Simple Top Bar) -->
-    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4" id="navbar">
+    <!-- Navigation -->
+    <nav class="fixed w-full z-50 top-0 transition-all duration-300 py-4 bg-[#050508]/80 backdrop-blur-md border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 flex justify-between items-center">
-            <div class="flex items-center gap-2">
-                <div class="w-8 h-8 rounded bg-gradient-to-br from-purple-600 to-blue-500 flex items-center justify-center font-bold text-white shadow-lg shadow-purple-500/30">A</div>
-                <span class="font-bold text-lg tracking-wide text-white">ADINOVA LABS</span>
+            
+            <!-- Logo Type -->
+            <div class="flex items-center gap-3 cursor-pointer group">
+                <div class="relative w-10 h-10 logo-box rounded-lg flex items-center justify-center overflow-hidden group-hover:border-brand-neon/50 transition-colors">
+                    <div class="absolute inset-0 bg-gradient-to-tr from-purple-600/20 to-transparent"></div>
+                    <!-- Vector-like A -->
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg" class="text-white relative z-10 drop-shadow-[0_0_8px_rgba(255,255,255,0.5)]">
+                        <path d="M12 2L2 22H6L8 18H16L18 22H22L12 2Z" fill="white" fill-opacity="0.9"/>
+                        <path d="M12 6L14.5 14H9.5L12 6Z" fill="#050508"/>
+                    </svg>
+                </div>
+                <div class="flex flex-col">
+                    <span class="font-bold text-lg tracking-wider text-white leading-none">ADINOVA</span>
+                    <span class="text-[9px] uppercase tracking-[0.4em] text-gray-500 font-semibold group-hover:text-brand-neon transition-colors">Labs</span>
+                </div>
             </div>
+
             <div class="hidden md:flex gap-8 text-sm font-medium text-gray-400">
-                <a href="#about" class="hover:text-brand-neon transition-colors">About</a>
-                <a href="#apps" class="hover:text-brand-neon transition-colors">Apps</a>
-                <a href="#contact" class="hover:text-brand-neon transition-colors">Contact</a>
+                <a href="#apps" class="hover:text-white hover:scale-105 transition-all">Portfolio</a>
+                <a href="#about" class="hover:text-white hover:scale-105 transition-all">Founder</a>
+                <a href="#contact" class="hover:text-white hover:scale-105 transition-all">Contact</a>
             </div>
         </div>
     </nav>
 
     <!-- 1️⃣ HERO SECTION -->
-    <section class="min-h-screen flex flex-col justify-center items-center text-center px-4 relative">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAiIGhlaWdodD0iMjAiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyI+PGNpcmNsZSBjeD0iMSIgY3k9IjEiIHI9IjEiIGZpbGw9InJnYmEoMjU1LDI1NSwyNTUsMC4wNSkiLz48L3N2Zz4=')] opacity-20"></div>
-        
-        <div class="space-y-8 max-w-4xl relative z-10 animate-fade-in-up">
-            <!-- Logo Box -->
-            <div class="w-24 h-24 mx-auto glass-panel rounded-2xl flex items-center justify-center mb-6 animate-float">
-                <span class="text-6xl font-bold text-transparent bg-clip-text bg-gradient-to-tr from-purple-400 via-pink-400 to-white">A</span>
+    <section class="min-h-screen flex flex-col justify-center items-center text-center px-6 relative pt-20">
+        <div class="space-y-6 max-w-4xl relative z-10 animate-fade-up">
+            
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-full border border-white/10 bg-white/5 text-xs font-medium text-purple-300 mb-4">
+                <span class="w-1.5 h-1.5 rounded-full bg-green-500 animate-pulse"></span>
+                Crafting Future-Ready Apps
             </div>
 
-            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight leading-tight">
-                Crafting Premium <br>
-                <span class="neon-text">Android Experiences</span>
+            <h1 class="text-5xl md:text-7xl font-black tracking-tight leading-[1.1] text-white">
+                Premium <span class="neon-gradient-text">Experiences</span> <br>
+                For Android
             </h1>
             
-            <p class="text-lg md:text-xl text-gray-400 max-w-2xl mx-auto font-light">
-                Beautifully designed apps made with passion, precision, and purpose. 
-                Redefining the standard of mobile simplicity.
+            <p class="text-lg text-gray-400 max-w-xl mx-auto font-light leading-relaxed">
+                We build apps that don't just work—they inspire. <br>Minimalist design meets powerful functionality.
             </p>
 
-            <div class="flex flex-col sm:flex-row gap-4 justify-center mt-8">
-                <a href="#apps" class="glass-btn">Explore Apps</a>
-                <button onclick="openModal('privacyModal')" class="px-6 py-3 rounded-full font-semibold text-gray-400 hover:text-white transition-colors">Privacy Policy</button>
+            <div class="flex flex-wrap gap-4 justify-center mt-10">
+                <a href="#apps" class="glass-btn">View Portfolio</a>
+                <button onclick="openModal('privacyModal')" class="px-8 py-3 rounded-xl font-medium text-gray-400 hover:text-white transition-colors">Privacy Policy</button>
             </div>
         </div>
     </section>
 
-    <!-- 2️⃣ ABOUT SECTION (Founder) -->
-    <section id="about" class="section-padding relative">
-        <div class="max-w-6xl mx-auto">
-            <div class="glass-panel rounded-3xl p-8 md:p-12 flex flex-col md:flex-row items-center gap-12">
-                
-                <!-- Founder Image -->
-                <div class="relative group">
-                    <div class="absolute -inset-1 bg-gradient-to-r from-purple-600 to-pink-600 rounded-full blur opacity-25 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-                    <div class="w-48 h-48 md:w-64 md:h-64 relative rounded-full overflow-hidden border-2 border-white/10">
-                        <img src="founder.png" alt="Mohanraj R Devendra" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Mohanraj+R&background=0D8ABC&color=fff&size=256'">
-                    </div>
-                </div>
-
-                <!-- Story -->
-                <div class="flex-1 text-center md:text-left">
-                    <h2 class="text-3xl font-bold mb-2">Mohanraj R Devendra</h2>
-                    <p class="text-brand-neon font-medium mb-6 uppercase tracking-wider text-sm">Founder & Lead Android Developer</p>
-                    
-                    <div class="space-y-4 text-gray-300 leading-relaxed">
-                        <p>
-                            Born into humble beginnings, Mohanraj forged his path not through privilege, but through relentless will. 
-                            Without mentors or academies, he mastered the art of code in the quiet hours of the night, fueled by pure passion and the boundless knowledge of the internet.
-                        </p>
-                        <p>
-                            From his first line of code in 2023 to the establishment of <strong class="text-white">Adinova Labs</strong> in 2026, his journey is a testament to self-taught mastery. 
-                            Today, he stands at the helm of a vision: to craft digital experiences that are not just functional, but profoundly beautiful—simplifying lives, one pixel at a time.
-                        </p>
-                    </div>
-
-                    <!-- Badges -->
-                    <div class="flex flex-wrap gap-3 mt-8 justify-center md:justify-start">
-                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Innovation</span>
-                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Quality</span>
-                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">Privacy Focus</span>
-                        <span class="px-4 py-1.5 rounded-full bg-white/5 border border-white/10 text-xs text-purple-200">UX First</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- 3️⃣ OUR APPS GRID -->
-    <section id="apps" class="section-padding">
+    <!-- 2️⃣ PORTFOLIO GRID (Fixed: Uniform Sizes) -->
+    <section id="apps" class="section-padding relative z-10">
         <div class="max-w-7xl mx-auto">
-            <h2 class="text-4xl font-bold text-center mb-16">Our <span class="neon-text">Portfolio</span></h2>
+            <div class="flex flex-col md:flex-row justify-between items-end mb-12 gap-4">
+                <div>
+                    <h2 class="text-4xl font-bold text-white mb-2">Our <span class="text-purple-400">Portfolio</span></h2>
+                    <p class="text-gray-500">Tools designed to simplify your digital life.</p>
+                </div>
+                <!-- Pipeline Badge -->
+                <div class="px-4 py-2 rounded-lg bg-white/5 border border-white/5 text-xs text-gray-400 font-mono">
+                    System Status: <span class="text-green-400">All Systems Normal</span>
+                </div>
+            </div>
 
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            <!-- The Grid: Strictly 3 columns on large screens for uniformity -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 
-                <!-- LIVE APP: Alfaaz-e-Dil -->
-                <div class="glass-panel rounded-2xl p-6 relative group hover:scale-[1.02] transition-all duration-300 hover:border-brand-neon/50">
-                    <div class="absolute top-4 right-4 bg-green-500/20 text-green-400 text-[10px] font-bold px-2 py-1 rounded border border-green-500/30 animate-pulse">LIVE</div>
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="alfaaz.png" alt="Icon" class="w-16 h-16 rounded-2xl shadow-lg group-hover:shadow-purple-500/20 transition-all" onerror="this.src='https://placehold.co/64x64/222/FFF?text=AD'">
+                <!-- LIVE APP: Alfaaz-e-Dil (Highlighted but same size) -->
+                <div class="glass-card p-6 relative group overflow-hidden border-purple-500/30 shadow-[0_0_20px_rgba(168,85,247,0.1)] flex flex-col">
+                    <div class="absolute top-0 right-0 p-3">
+                         <span class="flex h-3 w-3 relative">
+                            <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                            <span class="relative inline-flex rounded-full h-3 w-3 bg-green-500"></span>
+                        </span>
+                    </div>
+                    
+                    <div class="flex items-center gap-4 mb-5">
+                        <img src="alfaaz.png" alt="Icon" class="w-16 h-16 rounded-2xl shadow-lg shadow-purple-900/50" onerror="this.src='https://placehold.co/64x64/222/FFF?text=AD'">
                         <div>
-                            <h3 class="font-bold text-xl">Alfaaz-e-Dil</h3>
-                            <p class="text-xs text-gray-400">Poetry & Lifestyle</p>
+                            <h3 class="font-bold text-xl text-white group-hover:text-purple-300 transition-colors">Alfaaz-e-Dil</h3>
+                            <p class="text-xs text-purple-400 font-bold tracking-wider uppercase">Live on Play Store</p>
                         </div>
                     </div>
-                    <p class="text-gray-300 text-sm mb-6">A soulful collection of beautiful Shayari and quotes designed to touch your heart.</p>
-                    <button class="w-full py-2.5 rounded-xl bg-gradient-to-r from-purple-600 to-blue-600 text-white font-semibold text-sm shadow-lg shadow-purple-900/40 opacity-50 cursor-not-allowed">Install (Premium)</button>
+                    <p class="text-gray-300 text-sm mb-6 flex-grow leading-relaxed">
+                        A soulful collection of beautiful Shayari and quotes. Minimalist UI designed to let words touch your heart.
+                    </p>
+                    <button class="w-full py-3 rounded-lg bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-sm font-bold shadow-lg hover:shadow-purple-600/40 transition-all opacity-80 cursor-not-allowed flex items-center justify-center gap-2">
+                        Install Now <svg class="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"/></svg>
+                    </button>
                 </div>
 
-                <!-- COMING SOON APPS TEMPLATE -->
-                
+                <!-- COMING SOON CARDS (All Uniform Height) -->
+
                 <!-- Age Master -->
-                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="agemaster.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=AM'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">Age Master</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
+                <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="agemaster.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=AM'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">Precision age calculation with detailed insights.</p>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">Age Master</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Precision age calculation with detailed time analytics.</p>
                 </div>
 
                 <!-- Tic Tac Toe Pro -->
-                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="tictactoe.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=TT'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">Tic Tac Toe Pro</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
+                <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="tictactoe.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=TT'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">The classic game reinvented with neon aesthetics.</p>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">Tic Tac Toe Pro</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">The classic game reinvented with dark mode neon aesthetics.</p>
                 </div>
 
                 <!-- QR Ninja -->
-                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="qrninja.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=QR'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">QR Ninja</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
+                <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="qrninja.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=QR'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">Lightning fast QR code scanner and generator.</p>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">QR Ninja</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Lightning fast QR scanner & generator with history logs.</p>
                 </div>
 
                 <!-- Flash Storm -->
-                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="flashstorm.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FS'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">Flash Storm</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
+                <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="flashstorm.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FS'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">Ultimate flashlight utility with strobe effects.</p>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">Flash Storm</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Ultimate utility flashlight with SOS and strobe modes.</p>
                 </div>
 
                 <!-- Funny Sounds -->
-                <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="funnysounds.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FN'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">Funny Sounds</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
+                <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="funnysounds.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FN'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
                     </div>
-                    <p class="text-gray-400 text-sm mb-4">Hilarious soundboard to prank your friends.</p>
-                </div>
-                
-                 <!-- Font Magic -->
-                 <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="fontmagic.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FM'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">Font Magic</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Stylish text generator for social media bio.</p>
-                </div>
-                
-                 <!-- BMI Health Fit -->
-                 <div class="glass-panel rounded-2xl p-6 group hover:bg-white/[0.07] transition-all">
-                    <div class="flex items-center gap-4 mb-4">
-                        <img src="bmihealthfit.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale group-hover:grayscale-0 transition-all opacity-80 group-hover:opacity-100" onerror="this.src='https://placehold.co/64x64/333/FFF?text=BMI'">
-                        <div>
-                            <h3 class="font-bold text-lg text-gray-200">BMI Health Fit</h3>
-                            <span class="text-[10px] uppercase tracking-widest text-brand-neon">Coming Soon</span>
-                        </div>
-                    </div>
-                    <p class="text-gray-400 text-sm mb-4">Track your health goals with precise BMI metrics.</p>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">Funny Sounds</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">High-quality prank soundboard for endless fun.</p>
                 </div>
 
+                 <!-- Font Magic -->
+                 <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="fontmagic.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=FM'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">Font Magic</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Generate stylish text for social media bios instantly.</p>
+                </div>
+
+                 <!-- BMI Health Fit -->
+                 <div class="glass-card p-6 flex flex-col group h-full">
+                    <div class="flex justify-between items-start mb-4">
+                        <img src="bmihealthfit.png" alt="Icon" class="w-14 h-14 rounded-xl grayscale opacity-60 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500" onerror="this.src='https://placehold.co/64x64/333/FFF?text=BMI'">
+                        <span class="px-2 py-1 rounded bg-white/5 text-[10px] font-bold uppercase tracking-widest text-gray-500 border border-white/5">Soon</span>
+                    </div>
+                    <h3 class="font-bold text-lg text-gray-200 mb-2">BMI Health Fit</h3>
+                    <p class="text-gray-400 text-sm leading-relaxed">Track health goals with precise BMI metrics.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- 3️⃣ FOUNDER SECTION (Fixed: Smaller Photo, Squircle Shape) -->
+    <section id="about" class="section-padding relative overflow-hidden">
+        <div class="max-w-5xl mx-auto">
+            <div class="glass-card p-8 md:p-12 border border-white/10 bg-gradient-to-br from-white/[0.02] to-transparent relative">
+                <!-- Decorative Glow behind photo -->
+                <div class="absolute left-10 top-1/2 -translate-y-1/2 w-32 h-32 bg-purple-600/30 blur-[60px] pointer-events-none"></div>
+
+                <div class="flex flex-col md:flex-row items-center gap-10">
+                    
+                    <!-- New Photo Style: Rounded-2xl, Smaller Size -->
+                    <div class="flex-shrink-0 relative group">
+                        <div class="w-40 h-40 md:w-48 md:h-48 rounded-2xl overflow-hidden border border-white/20 shadow-2xl relative z-10 group-hover:scale-[1.02] transition-transform duration-500">
+                            <img src="founder.png" alt="Mohanraj R Devendra" class="w-full h-full object-cover" onerror="this.src='https://ui-avatars.com/api/?name=Mohanraj+R&background=0D8ABC&color=fff&size=256'">
+                        </div>
+                        <!-- Subtle border glow -->
+                        <div class="absolute -inset-1 rounded-2xl bg-gradient-to-tr from-purple-500/20 to-transparent blur-sm -z-10"></div>
+                    </div>
+
+                    <div class="text-center md:text-left">
+                        <h2 class="text-3xl font-bold text-white mb-2">Mohanraj R Devendra</h2>
+                        <p class="text-brand-neon font-bold text-xs tracking-[0.2em] uppercase mb-6">Founder & Lead Android Developer</p>
+                        
+                        <p class="text-gray-300 leading-relaxed font-light mb-4">
+                            "I didn't have mentors or academies. I had <strong class="text-white">curiosity</strong>."
+                        </p>
+                        <p class="text-gray-400 text-sm leading-relaxed">
+                            Starting in 2023, Mohanraj taught himself app development through pure passion. By 2026, he laid the foundation of <span class="text-white">Adinova Labs</span> with a single vision: to build simple, beautiful apps that make life easier for millions.
+                        </p>
+
+                        <!-- Minimal Badges -->
+                        <div class="flex flex-wrap gap-2 mt-6 justify-center md:justify-start">
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/5 text-[10px] text-gray-300">Self-Taught</span>
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/5 text-[10px] text-gray-300">Innovator</span>
+                            <span class="px-3 py-1 rounded bg-white/5 border border-white/5 text-[10px] text-gray-300">Privacy Focused</span>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
     <!-- 4️⃣ CONTACT SECTION -->
-    <section id="contact" class="section-padding mb-20">
-        <div class="max-w-3xl mx-auto glass-panel rounded-3xl p-10 text-center relative overflow-hidden">
-            <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-transparent via-purple-500 to-transparent"></div>
+    <section id="contact" class="section-padding mb-10">
+        <div class="max-w-2xl mx-auto text-center">
+            <h2 class="text-3xl font-bold text-white mb-4">Get in Touch</h2>
+            <p class="text-gray-400 mb-8">Have feedback or a feature request?</p>
             
-            <h2 class="text-3xl font-bold mb-4">Let's Build the <span class="text-purple-400">Future</span></h2>
-            <p class="text-gray-400 mb-8">Have a query or a suggestion? Reach out directly to the lab.</p>
-            
-            <div class="inline-flex flex-col items-center gap-2">
-                <span class="text-sm text-gray-500 uppercase tracking-widest">Official Email</span>
-                <a href="mailto:adinovalabs@zohomail.in" class="text-xl md:text-2xl font-mono text-white hover:text-brand-neon transition-colors border-b border-white/10 pb-1">adinovalabs@zohomail.in</a>
-            </div>
-
-            <div class="mt-8">
-                <a href="mailto:adinovalabs@zohomail.in" class="glass-btn inline-block">Send Email</a>
-            </div>
+            <a href="mailto:adinovalabs@zohomail.in" class="glass-card px-8 py-4 inline-flex items-center gap-3 hover:bg-white/5 transition-colors group">
+                <svg class="w-5 h-5 text-brand-neon group-hover:scale-110 transition-transform" fill="none" viewBox="0 0 24 24" stroke="currentColor"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
+                <span class="text-white font-mono text-lg">adinovalabs@zohomail.in</span>
+            </a>
         </div>
     </section>
 
     <!-- FOOTER -->
-    <footer class="py-8 text-center text-gray-600 text-sm border-t border-white/5 bg-black">
-        <p>&copy; 2026 Adinova Labs. All Rights Reserved.</p>
-        <div class="flex justify-center gap-4 mt-4">
-            <button onclick="openModal('privacyModal')" class="hover:text-gray-300 transition-colors">Privacy Policy</button>
-            <span>•</span>
-            <button onclick="openModal('termsModal')" class="hover:text-gray-300 transition-colors">Terms & Conditions</button>
+    <footer class="py-8 border-t border-white/5 text-center">
+        <div class="flex items-center justify-center gap-2 mb-4 opacity-70">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg"><path d="M12 2L2 22H6L8 18H16L18 22H22L12 2Z" fill="white"/></svg>
+            <span class="text-xs font-bold tracking-widest text-white">ADINOVA LABS</span>
+        </div>
+        <div class="text-[10px] text-gray-600 uppercase tracking-wider flex justify-center gap-6">
+            <span>&copy; 2026</span>
+            <button onclick="openModal('privacyModal')" class="hover:text-gray-400">Privacy</button>
+            <button onclick="openModal('termsModal')" class="hover:text-gray-400">Terms</button>
         </div>
     </footer>
 
-    <!-- 5️⃣ & 6️⃣ MODALS -->
-    
-    <!-- Modal Backdrop -->
-    <div id="modalBackdrop" class="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] hidden opacity-0 transition-opacity duration-300 flex items-center justify-center p-4" onclick="closeAllModals()">
-        
+    <!-- MODALS (Reusable Logic) -->
+    <div id="modalBackdrop" class="fixed inset-0 bg-black/90 backdrop-blur-md z-[100] hidden opacity-0 transition-all duration-300 flex items-center justify-center p-4" onclick="closeAllModals()">
         <!-- Privacy Modal -->
-        <div id="privacyModal" class="bg-[#0f0f11] border border-white/10 w-full max-w-2xl rounded-2xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden shadow-2xl shadow-purple-900/20" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+        <div id="privacyModal" class="glass-card w-full max-w-xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-white">Privacy Policy</h3>
-                <button onclick="closeAllModals()" class="text-gray-400 hover:text-white bg-white/5 w-8 h-8 rounded-full flex items-center justify-center transition-colors">&times;</button>
+                <button onclick="closeAllModals()" class="text-gray-500 hover:text-white">&times;</button>
             </div>
-            <div class="space-y-4 text-gray-300 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scroll">
-                <p class="font-semibold text-white">Commitment to User Privacy</p>
-                <p>At Adinova Labs, privacy is paramount. We operate on a strict <strong>'no-data-collection'</strong> philosophy. We do not require account creation, nor do we harvest personal user data for our servers.</p>
-                
-                <p class="font-semibold text-white mt-4">Advertising & Identifiers</p>
-                <p>While our core services are free, we may utilize Google AdMob to support our development efforts. AdMob may collect standard mobile identifiers (like Android Advertising ID) solely for the purpose of serving ads. This is a standard industry practice.</p>
-
-                <p class="font-semibold text-white mt-4">Permissions</p>
-                <p>Our apps request only the absolute minimum permissions required for functionality (e.g., Camera for QR Ninja). We never access sensitive contacts, messages, or gallery photos without explicit user-initiated action.</p>
-
-                <p class="font-semibold text-white mt-4">User Control</p>
-                <p>You maintain full control. You may disable personalized advertising at any time through your Android device settings under Google > Ads.</p>
-                
-                <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500">
-                    Questions? Contact: <span class="text-brand-neon">adinovalabs@zohomail.in</span>
-                </div>
+            <div class="text-sm text-gray-300 space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <p><strong>Strict No-Data Policy:</strong> Adinova Labs does not collect personal data. No sign-ups required.</p>
+                <p><strong>Ads:</strong> We use Google AdMob for advertisements. AdMob may use device identifiers.</p>
+                <p><strong>Permissions:</strong> Permissions are requested only when needed (e.g., Camera for QR code).</p>
+                <p class="text-xs text-gray-500 pt-4">Contact: adinovalabs@zohomail.in</p>
             </div>
         </div>
-
+        
         <!-- Terms Modal -->
-        <div id="termsModal" class="bg-[#0f0f11] border border-white/10 w-full max-w-2xl rounded-2xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden shadow-2xl shadow-purple-900/20" onclick="event.stopPropagation()">
-            <div class="flex justify-between items-center mb-6 border-b border-white/10 pb-4">
+         <div id="termsModal" class="glass-card w-full max-w-xl p-8 transform scale-95 opacity-0 transition-all duration-300 hidden" onclick="event.stopPropagation()">
+            <div class="flex justify-between items-center mb-6">
                 <h3 class="text-2xl font-bold text-white">Terms & Conditions</h3>
-                <button onclick="closeAllModals()" class="text-gray-400 hover:text-white bg-white/5 w-8 h-8 rounded-full flex items-center justify-center transition-colors">&times;</button>
+                <button onclick="closeAllModals()" class="text-gray-500 hover:text-white">&times;</button>
             </div>
-            <div class="space-y-4 text-gray-300 text-sm leading-relaxed max-h-[60vh] overflow-y-auto pr-2 custom-scroll">
-                <p class="font-semibold text-white">Usage License</p>
-                <p>By downloading or using Adinova Labs applications, you are granted a license for personal, non-commercial use only. The applications are provided "as-is" without warranties of any kind.</p>
-                
-                <p class="font-semibold text-white mt-4">Intellectual Property</p>
-                <p>All assets, including but not limited to UI designs, source code, graphics, and logos, are the exclusive property of Adinova Labs. <strong>Reverse engineering, decompiling, or cloning our applications is strictly prohibited</strong> and will be met with legal action.</p>
-
-                <p class="font-semibold text-white mt-4">Monetization</p>
-                <p>We reserve the right to display advertisements within our applications via third-party providers (Google AdMob) to sustain our development costs.</p>
-
-                <p class="font-semibold text-white mt-4">Liability</p>
-                <p>Adinova Labs is not liable for any direct or indirect damages arising from the misuse of our applications. Users are responsible for ensuring their device compatibility and security.</p>
-                
-                <div class="mt-6 pt-4 border-t border-white/5 text-xs text-gray-500">
-                    Legal Contact: <span class="text-brand-neon">adinovalabs@zohomail.in</span>
-                </div>
+            <div class="text-sm text-gray-300 space-y-4 max-h-[60vh] overflow-y-auto pr-2">
+                <p><strong>Use:</strong> Personal use only. No reverse engineering.</p>
+                <p><strong>Ownership:</strong> All assets belong to Adinova Labs.</p>
+                <p><strong>Liability:</strong> Apps are provided "as-is".</p>
             </div>
         </div>
-
     </div>
 
-    <!-- Logic -->
     <script>
-        // Navbar Scroll Effect
-        window.addEventListener('scroll', () => {
-            const nav = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                nav.classList.add('bg-black/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
-            } else {
-                nav.classList.remove('bg-black/80', 'backdrop-blur-md', 'border-b', 'border-white/5');
-            }
-        });
-
         // Modal Logic
         const backdrop = document.getElementById('modalBackdrop');
         const privacyModal = document.getElementById('privacyModal');
@@ -398,38 +370,24 @@
 
         function openModal(modalId) {
             backdrop.classList.remove('hidden');
-            // Small delay to allow display:block to apply before opacity transition
             setTimeout(() => {
                 backdrop.classList.remove('opacity-0');
-                
-                if (modalId === 'privacyModal') {
-                    privacyModal.classList.remove('hidden');
-                    // Separate timeout for transform animation
-                    setTimeout(() => {
-                        privacyModal.classList.remove('scale-95', 'opacity-0');
-                        privacyModal.classList.add('scale-100', 'opacity-100');
-                    }, 50);
-                } else {
-                    termsModal.classList.remove('hidden');
-                    setTimeout(() => {
-                        termsModal.classList.remove('scale-95', 'opacity-0');
-                        termsModal.classList.add('scale-100', 'opacity-100');
-                    }, 50);
-                }
+                const modal = modalId === 'privacyModal' ? privacyModal : termsModal;
+                modal.classList.remove('hidden');
+                setTimeout(() => {
+                    modal.classList.remove('scale-95', 'opacity-0');
+                    modal.classList.add('scale-100', 'opacity-100');
+                }, 50);
             }, 10);
-            document.body.style.overflow = 'hidden'; // Prevent background scrolling
+            document.body.style.overflow = 'hidden';
         }
 
         function closeAllModals() {
             backdrop.classList.add('opacity-0');
-            
-            // Animate modals out
-            privacyModal.classList.remove('scale-100', 'opacity-100');
-            privacyModal.classList.add('scale-95', 'opacity-0');
-            
-            termsModal.classList.remove('scale-100', 'opacity-100');
-            termsModal.classList.add('scale-95', 'opacity-0');
-
+            [privacyModal, termsModal].forEach(modal => {
+                modal.classList.remove('scale-100', 'opacity-100');
+                modal.classList.add('scale-95', 'opacity-0');
+            });
             setTimeout(() => {
                 backdrop.classList.add('hidden');
                 privacyModal.classList.add('hidden');
@@ -438,27 +396,21 @@
             }, 300);
         }
 
-        // Intersection Observer for scroll animations
-        const observerOptions = {
-            threshold: 0.1
-        };
-
+        // Scroll Reveal
         const observer = new IntersectionObserver((entries) => {
             entries.forEach(entry => {
                 if (entry.isIntersecting) {
-                    entry.target.classList.add('animate-fade-in-up');
-                    entry.target.style.opacity = 1;
+                    entry.target.classList.add('animate-fade-up');
                     observer.unobserve(entry.target);
                 }
             });
-        }, observerOptions);
-
-        // Apply observer to sections
+        });
+        
+        // Add scroll animation to sections
         document.querySelectorAll('section > div').forEach(el => {
-            el.style.opacity = 0; // Hide initially
+            el.classList.add('opacity-0'); // Hide initially
             observer.observe(el);
         });
-
     </script>
 </body>
 </html>
