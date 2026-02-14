@@ -236,3 +236,8 @@ nav {
 body.scrolled nav {
   background: rgba(11, 15, 26, 0.95);
 }
+.highlight {
+  background: linear-gradient(to right, #ffffff, #4F8CFF);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
