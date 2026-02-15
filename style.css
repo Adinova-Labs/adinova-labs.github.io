@@ -241,3 +241,31 @@ body.scrolled nav {
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+/* MOBILE OPTIMIZATION */
+@media (max-width: 768px) {
+
+  nav {
+    padding: 15px 20px;
+  }
+
+  nav ul {
+    gap: 15px;
+    font-size: 14px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+    line-height: 1.2;
+  }
+
+  .hero-content p {
+    font-size: 16px;
+    padding: 0 10px;
+  }
+
+  .btn {
+    padding: 14px 28px;
+    font-size: 14px;
+  }
+
+}
