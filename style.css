@@ -297,6 +297,19 @@ background: rgba(255,255,255,0.05);
   font-size: 15px;
   line-height: 1.6;
 }
+@media (max-width: 768px) {
+  .vision {
+    padding: 80px 20px;
+  }
+
+  .vision h2 {
+    font-size: 32px;
+  }
+
+  .vision-card {
+    padding: 30px 20px;
+  }
+}
 /* MOBILE OPTIMIZATION */
 @media (max-width: 768px) {
 
