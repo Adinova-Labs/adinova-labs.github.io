@@ -250,13 +250,15 @@ We are engineering scalable digital ecosystems and immersive interactive worlds.
 const reveals = document.querySelectorAll(".reveal");
 
 function revealOnScroll() {
-  const windowHeight = window.innerHeight;
+  const triggerBottom = window.innerHeight * 0.85;
 
   reveals.forEach((element) => {
-    const elementTop = element.getBoundingClientRect().top;
+    const boxTop = element.getBoundingClientRect().top;
 
-    if (elementTop < windowHeight - 80) {
+    if (boxTop < triggerBottom) {
       element.classList.add("active");
+    } else {
+      element.classList.remove("active");
     }
   });
 }
