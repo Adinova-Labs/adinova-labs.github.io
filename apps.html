@@ -1,41 +1,125 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Apps | Adinova Labs</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Apps | Adinova Labs</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
 
 <nav>
-  <!-- same nav code here -->
+  <div class="logo">
+    <img src="adinovalogo.png" alt="Adinova Labs Logo">
+    <span>Adinova Labs</span>
+  </div>
+
+  <div class="menu-toggle" id="menu-toggle">
+    <span></span>
+    <span></span>
+    <span></span>
+  </div>
+
+  <ul id="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="apps.html" class="active">Apps</a></li>
+    <li><a href="games.html">Games</a></li>
+    <li><a href="vision.html">Vision</a></li>
+    <li><a href="contact.html">Contact</a></li>
+  </ul>
 </nav>
 
-<section class="page-hero">
-  <h1>Our Mobile Applications</h1>
-  <p>Premium, performance-focused Android apps built for long-term growth.</p>
+
+<section class="inner-hero">
+  <div class="inner-hero-content">
+    <h1>Our Applications</h1>
+    <p>Premium, performance-focused Android applications built for long-term growth.</p>
+  </div>
 </section>
+
 
 <section class="products">
-  <div class="product-card">
-    <img src="alfaaz.png">
-    <h3>Alfaaz-e-Dil</h3>
-    <p>Premium poetry & quotes application.</p>
-  </div>
+  <div class="products-container">
 
-  <div class="product-card">
-    <img src="qrninja.png">
-    <h3>QR Ninja</h3>
-    <p>Fast and lightweight QR scanner.</p>
-  </div>
+    <div class="product-card">
+      <img src="alfaaz-dil.png" alt="Alfaaz-e-Dil">
+      <h3>Alfaaz-e-Dil</h3>
+      <p>Premium poetry & quotes application crafted for emotional expression.</p>
+      <a href="#" class="product-btn">View on Play Store</a>
+    </div>
 
-  <div class="product-card">
-    <img src="agemaster.png">
-    <h3>Age Master</h3>
-    <p>Accurate age calculator.</p>
+    <div class="product-card">
+      <img src="qrninja.png" alt="QR Ninja">
+      <h3>QR Ninja</h3>
+      <p>Fast and lightweight QR scanner with clean minimal interface.</p>
+      <a href="#" class="product-btn">View on Play Store</a>
+    </div>
+
+    <div class="product-card">
+      <img src="agemaster.png" alt="Age Master">
+      <h3>Age Master</h3>
+      <p>Accurate age calculator with polished UI and instant results.</p>
+      <a href="#" class="product-btn">View on Play Store</a>
+    </div>
+
   </div>
 </section>
+
+
+<footer>
+  <div class="footer-container">
+
+    <div class="footer-brand">
+      <img src="adinovalogo.png" alt="Adinova Labs Logo">
+      <h3>Adinova Labs</h3>
+      <p>Independent studio building scalable mobile apps and premium interactive experiences.</p>
+    </div>
+
+    <div class="footer-links">
+      <h4>Quick Links</h4>
+      <a href="index.html">Home</a>
+      <a href="apps.html">Apps</a>
+      <a href="games.html">Games</a>
+      <a href="vision.html">Vision</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Legal</h4>
+      <a href="privacy.html">Privacy Policy</a>
+    </div>
+
+    <div class="footer-links">
+      <h4>Contact</h4>
+      <p>adinovalabs@zohomail.in</p>
+    </div>
+
+  </div>
+
+  <div class="footer-bottom">
+    © 2026 Adinova Labs. All Rights Reserved.
+  </div>
+</footer>
+
+
+<script>
+const toggle = document.getElementById("menu-toggle");
+const navLinks = document.getElementById("nav-links");
+
+toggle.addEventListener("click", () => {
+  toggle.classList.toggle("active");
+  navLinks.classList.toggle("active");
+});
+
+document.querySelectorAll("#nav-links a").forEach(link => {
+  link.addEventListener("click", () => {
+    toggle.classList.remove("active");
+    navLinks.classList.remove("active");
+  });
+});
+</script>
 
 </body>
 </html>
