@@ -508,3 +508,49 @@ background: rgba(255,255,255,0.05);
     margin-left: 20px !important;
   }
 }
+/* CTA SECTION */
+
+.cta {
+  padding: 120px 20px;
+  text-align: center;
+  background: linear-gradient(to bottom, #020913, #061024);
+}
+
+.cta-container {
+  max-width: 800px;
+  margin: auto;
+}
+
+.cta h2 {
+  font-size: 40px;
+  margin-bottom: 20px;
+}
+
+.cta p {
+  color: #9ca3af;
+  font-size: 18px;
+  margin-bottom: 40px;
+  line-height: 1.6;
+}
+
+.cta-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.secondary-btn {
+  padding: 12px 28px;
+  background: transparent;
+  border: 1px solid #4F8CFF;
+  border-radius: 30px;
+  color: white;
+  text-decoration: none;
+  transition: 0.3s ease;
+}
+
+.secondary-btn:hover {
+  background: #4F8CFF;
+  transform: translateY(-3px);
+}
