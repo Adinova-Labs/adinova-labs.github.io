@@ -1,264 +1,142 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adinova Labs | Mobile App & Game Studio</title>
-
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Adinova Labs | Premium Studio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link rel="stylesheet" href="style.css">
 </head>
-
 <body>
 
-<nav>
-  <div class="logo">
-    <img src="adinovalogo.png" alt="Adinova Labs Logo">
-    <span>Adinova Labs</span>
-  </div>
-
-  <div class="menu-toggle" id="menu-toggle">
-    <span></span>
-    <span></span>
-    <span></span>
-  </div>
-
-  <ul id="nav-links">
-    <li><a href="#home">Home</a></li>
-    <li><a href="#apps">Apps</a></li>
-    <li><a href="#games">Games</a></li>
-    <li><a href="#vision">Vision</a></li>
-    <li><a href="#contact">Contact</a></li>
-  </ul>
+<nav id="navbar">
+    <div class="nav-container">
+        <div class="logo">
+            <img src="adinovalogo.png" alt="Logo">
+            <span>Adinova Labs</span>
+        </div>
+        <ul id="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#apps">Apps</a></li>
+            <li><a href="#games">Games</a></li>
+            <li><a href="#vision">Vision</a></li>
+            <li><a href="#roadmap">Roadmap</a></li>
+        </ul>
+        <div class="menu-toggle" id="menu-toggle"><span></span><span></span><span></span></div>
+    </div>
 </nav>
 
 <section class="hero" id="home">
-    <video autoplay muted loop playsinline>
-        <source src="hero-video.mp4" type="video/mp4">
-    </video>
-
+    <video autoplay muted loop playsinline class="hero-video"><source src="hero-video.mp4" type="video/mp4"></video>
     <div class="hero-overlay"></div>
-
-    <div class="floating-glow"></div>
-
     <div class="hero-content">
-        <h1 class="fade-in">
-Crafting the Future of
-<span class="highlight">Interactive Worlds</span>
-</h1>
-        <p class="fade-in-delay">
-            Independent studio crafting scalable mobile apps and ambitious game worlds.
-        </p>
-        <a href="#apps" class="btn glow-btn fade-in-delay-2">Explore Our Products</a>
+        <h1>Crafting the Future of <br><span class="highlight">Interactive Worlds</span></h1>
+        <p>Independent studio engineering high-performance mobile ecosystems and ambitious digital IPs.</p>
+        <div class="hero-btns">
+            <a href="#apps" class="btn primary-btn">Explore Products</a>
+            <a href="#" class="play-badge"><img src="https://upload.wikimedia.org/wikipedia/commons/7/78/Google_Play_Store_badge_EN.svg" alt="Play Store"></a>
+        </div>
     </div>
 </section>
 
-<section class="apps-section" id="apps">
-  <div class="section-header">
-    <h2>Our Applications</h2>
-    <p>Premium Android apps built for performance and long-term growth.</p>
-  </div>
-
-  <div class="scroll-wrapper">
-    <div class="scroll-track">
-
-      <div class="app-card">
-        <img src="alfaaz.png" alt="Alfaaz-e-Dil">
-        <h3>Alfaaz-e-Dil</h3>
-        <p>Premium poetry & quotes platform.</p>
-      </div>
-
-      <div class="app-card">
-        <img src="qrninja.png" alt="QR Ninja">
-        <h3>QR Ninja</h3>
-        <p>Fast and lightweight QR scanner.</p>
-      </div>
-
-      <div class="app-card">
-        <img src="agemaster.png" alt="Age Master">
-        <h3>Age Master</h3>
-        <p>Accurate age calculator with clean UI.</p>
-      </div>
-
+<section class="products-section" id="apps">
+    <div class="section-title">
+        <h2>Our Applications</h2>
+        <div class="underline"></div>
     </div>
-  </div>
+    <div class="product-grid">
+        <div class="product-card">
+            <img src="alfaaz.png" alt="Alfaaz">
+            <h3>Alfaaz-e-Dil</h3>
+            <p>Premium poetry & quotes platform for creative souls.</p>
+        </div>
+        <div class="product-card">
+            <img src="qrninja.png" alt="QR Ninja">
+            <h3>QR Ninja</h3>
+            <p>Next-gen fast and lightweight QR ecosystem.</p>
+        </div>
+        <div class="product-card">
+            <img src="agemaster.png" alt="Age Master">
+            <h3>Age Master</h3>
+            <p>High-precision utility with a minimal aesthetic.</p>
+        </div>
+    </div>
 </section>
 
-<section class="games-section" id="games">
-  <div class="section-header">
-    <h2>Our Games</h2>
-    <p>Interactive game experiences crafted with precision.</p>
-  </div>
-
-  <div class="scroll-wrapper">
-    <div class="scroll-track">
-
-      <div class="app-card">
-        <img src="tictactoe.png" alt="Tic Tac Toe Pro">
-        <h3>Tic Tac Toe Pro</h3>
-        <p>Modern competitive classic game.</p>
-      </div>
-
+<section class="products-section" id="games">
+    <div class="section-title">
+        <h2>Our Games</h2>
+        <div class="underline"></div>
     </div>
-  </div>
+    <div class="product-grid">
+        <div class="product-card game-card">
+            <img src="tictactoe.png" alt="Tic Tac Toe">
+            <h3>Tic Tac Toe Pro</h3>
+            <p>Redefining classic strategy with competitive mechanics.</p>
+        </div>
+    </div>
 </section>
 
-<section class="vision" id="vision">
-  <div class="vision-container">
-
-    <h2>Our Vision</h2>
-    <p class="vision-subtitle">
-      We are not just building applications.
-We are engineering scalable digital ecosystems and immersive interactive worlds.
-    </p>
-
-    <div class="vision-grid">
-
-      <div class="vision-card">
-        <h3>Expanding Into Large-Scale Game Worlds</h3>
-        <p>
-          Creating immersive interactive experiences designed for long-term
-          engagement and performance.
-        </p>
-      </div>
-
-      <div class="vision-card">
-        <h3>Building Recognizable Digital IP</h3>
-        <p>
-          Developing original characters, systems, and scalable ecosystems
-          with long-term growth potential.
-        </p>
-      </div>
-
-      <div class="vision-card">
-        <h3>Growing Into a Global Independent Studio</h3>
-        <p>
-          Focused on innovation, production quality, and building premium
-          digital experiences worldwide.
-        </p>
-      </div>
-
+<section class="vision-section" id="vision">
+    <div class="container">
+        <h2>Our Vision</h2>
+        <p class="vision-desc">We are engineering scalable digital ecosystems and immersive interactive worlds.</p>
+        <div class="vision-grid">
+            <div class="v-card"><h3>Large-Scale Worlds</h3><p>Creating immersive experiences designed for long-term engagement.</p></div>
+            <div class="v-card"><h3>Digital IP</h3><p>Developing original systems and scalable ecosystems with growth potential.</p></div>
+            <div class="v-card"><h3>Global Studio</h3><p>Focused on innovation and building premium digital experiences worldwide.</p></div>
+        </div>
     </div>
-
-  </div>
 </section>
 
-<section class="roadmap" id="roadmap">
-  <div class="roadmap-container">
+<section class="roadmap-section" id="roadmap">
     <h2>Studio Roadmap</h2>
-    <p class="subtitle">Our long-term execution plan toward building large-scale interactive experiences.</p>
-
     <div class="timeline">
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Phase 1 – Foundation</h3>
-          <p>Building high-quality Android applications, refining UI/UX systems, and establishing monetization pipelines.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Phase 2 – Brand & Scale</h3>
-          <p>Strengthening studio identity, expanding across platforms, and building an engaged user community.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Phase 3 – Original Game IP</h3>
-          <p>Developing immersive, story-driven interactive experiences with scalable backend architecture.</p>
-        </div>
-      </div>
-
-      <div class="timeline-item">
-        <div class="timeline-content">
-          <h3>Phase 4 – Large-Scale Interactive Worlds</h3>
-          <p>Building ambitious large-scale experiences inspired by AAA standards and global digital ecosystems.</p>
-        </div>
-      </div>
+        <div class="t-item"><h4>Phase 1</h4><p>Foundation & Android Ecosystem</p></div>
+        <div class="t-item"><h4>Phase 2</h4><p>Brand Scaling & Global Community</p></div>
+        <div class="t-item"><h4>Phase 3</h4><p>Original AAA Game IP Development</p></div>
+        <div class="t-item"><h4>Phase 4</h4><p>Large-Scale Interactive Worlds</p></div>
     </div>
-  </div>
 </section>
 
-<section class="cta" id="contact">
-  <div class="cta-container">
+<section class="cta-section" id="contact">
     <h2>Let’s Build the Future Together</h2>
-    <p>
-      Adinova Labs is focused on crafting scalable digital experiences.
-      If you believe in ambitious interactive worlds, connect with us.
-    </p>
-
-    <div class="cta-buttons">
-      <a href="mailto:adinovalabs@zohomail.in" class="btn glow-btn">Contact Us</a>
-      <a href="#" class="btn secondary-btn">Follow the Studio</a>
+    <p>Adinova Labs is focused on crafting scalable digital experiences. Connect with us to be part of the journey.</p>
+    <div class="cta-btns">
+        <a href="mailto:adinovalabs@zohomail.in" class="btn primary-btn">Contact Us</a>
+        <div class="social-mini">
+            <a href="#"><i class="fab fa-github"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-linkedin"></i></a>
+        </div>
     </div>
-  </div>
 </section>
-  <footer class="footer">
-  <div class="footer-container">
 
-    <div class="footer-brand">
-      <div class="footer-logo">
-        <img src="adinovalogo.png" alt="Adinova Labs Logo">
-        <span>Adinova Labs</span>
-      </div>
-      <p>
-        Independent studio building scalable mobile apps and premium game experiences.
-      </p>
+<footer class="footer">
+    <div class="f-container">
+        <div class="f-brand">
+            <h3>Adinova Labs</h3>
+            <p>Independent studio building scalable mobile apps and premium game experiences.</p>
+        </div>
+        <div class="f-links">
+            <h4>Quick Links</h4>
+            <a href="#apps">Apps</a><a href="#games">Games</a><a href="#vision">Vision</a>
+        </div>
+        <div class="f-contact">
+            <h4>Legal</h4>
+            <a href="#">Privacy Policy</a><a href="#">Terms</a>
+        </div>
     </div>
-
-    <div class="footer-links">
-  <h4>Quick Links</h4>
-  <a href="#home">Home</a>
-  <a href="#apps">Apps</a>
-  <a href="#games">Games</a>
-  <a href="#vision">Vision</a>
-  <a href="#contact">Contact</a>  
-</div>
-
-    <div class="footer-links">
-      <h4>Legal</h4>
-      <a href="privacy.html">Privacy Policy</a>
-      <a href="terms.html">Terms & Conditions</a>
-    </div>
-
-    <div class="footer-contact">
-      <h4>Contact</h4>
-      <a href="mailto:adinovalabs@zohomail.in">adinovalabs@zohomail.in</a>
-    </div>
-
-  </div>
-
-  <div class="footer-bottom">
-    © 2026 Adinova Labs. All rights reserved.
-  </div>
+    <div class="f-bottom">© 2026 Adinova Labs. All Rights Reserved.</div>
 </footer>
 
-  <script>
-  const toggle = document.getElementById("menu-toggle");
-  const navLinks = document.getElementById("nav-links");
-  const links = document.querySelectorAll("#nav-links a");
-
-  // Toggle menu
-  toggle.addEventListener("click", () => {
-    toggle.classList.toggle("active");
-    navLinks.classList.toggle("active");
-  });
-
-  // Close menu when link clicked
-  links.forEach(link => {
-    link.addEventListener("click", () => {
-      toggle.classList.remove("active");
-      navLinks.classList.remove("active");
-    });
-  });
-
-  // Close menu when clicking outside
-  document.addEventListener("click", (e) => {
-    if (!toggle.contains(e.target) && !navLinks.contains(e.target)) {
-      toggle.classList.remove("active");
-      navLinks.classList.remove("active");
-    }
-  });
+<script>
+    window.onscroll = function() {
+        const nav = document.getElementById('navbar');
+        if (window.pageYOffset > 100) nav.classList.add("sticky");
+        else nav.classList.remove("sticky");
+    };
+</script>
 </body>
 </html>
