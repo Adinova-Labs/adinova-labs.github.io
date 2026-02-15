@@ -612,4 +612,24 @@ background: rgba(255,255,255,0.05);
   font-size: 14px;
   color: #777;
 }
+.inner-hero {
+  padding: 140px 20px 80px;
+  text-align: center;
+  background: linear-gradient(to bottom, #081325, #050d1c);
+}
+
+.inner-hero h1 {
+  font-size: 42px;
+  margin-bottom: 15px;
+}
+
+.inner-hero p {
+  color: #9fb3d1;
+  max-width: 600px;
+  margin: auto;
+}
+
+.active {
+  color: #5f9cff;
+}
 
