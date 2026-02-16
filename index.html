@@ -7,141 +7,17 @@
 
 <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
 
-<style>
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-body {
-    font-family: 'Inter', sans-serif;
-    background-color: #0B0F1A;
-    color: white;
-}
-
-/* NAVBAR */
-nav {
-    position: fixed;
-    width: 100%;
-    padding: 20px 60px;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    z-index: 1000;
-    background: rgba(11,15,26,0.6);
-    backdrop-filter: blur(10px);
-}
-
-nav h2 {
-    font-weight: 700;
-    letter-spacing: 1px;
-}
-
-nav ul {
-    list-style: none;
-    display: flex;
-    gap: 30px;
-}
-
-nav ul li a {
-    text-decoration: none;
-    color: white;
-    font-weight: 500;
-    transition: 0.3s;
-}
-
-nav ul li a:hover {
-    color: #4F8CFF;
-}
-
-/* HERO SECTION */
-.hero {
-    position: relative;
-    height: 100vh;
-    width: 100%;
-    overflow: hidden;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-}
-
-.hero video {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    min-width: 100%;
-    min-height: 100%;
-    width: auto;
-    height: auto;
-    z-index: -2;
-    transform: translate(-50%, -50%);
-    object-fit: cover;
-}
-
-.hero::after {
-    content: "";
-    position: absolute;
-    width: 100%;
-    height: 100%;
-    background: linear-gradient(to bottom, rgba(11,15,26,0.6), rgba(11,15,26,0.9));
-    z-index: -1;
-}
-
-.hero-content {
-    max-width: 800px;
-    padding: 20px;
-}
-
-.hero-content h1 {
-    font-size: 56px;
-    font-weight: 800;
-    margin-bottom: 20px;
-}
-
-.hero-content p {
-    font-size: 20px;
-    color: #cccccc;
-    margin-bottom: 40px;
-}
-
-.btn {
-    padding: 14px 32px;
-    background: #4F8CFF;
-    color: white;
-    border: none;
-    border-radius: 30px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.3s;
-}
-
-.btn:hover {
-    background: #3674e8;
-}
-
-/* RESPONSIVE */
-@media (max-width: 768px) {
-    nav {
-        padding: 20px;
-    }
-
-    .hero-content h1 {
-        font-size: 34px;
-    }
-
-    .hero-content p {
-        font-size: 16px;
-    }
-}
 </style>
 </head>
 
 <body>
 
 <nav>
-    <h2>Adinova Labs</h2>
+    <div class="logo">
+        <img src="adinovalogo.png" alt="Adinova Labs Logo">
+        <span>Adinova Labs</span>
+    </div>
+
     <ul>
         <li><a href="#">Home</a></li>
         <li><a href="#">Apps</a></li>
@@ -153,13 +29,57 @@ nav ul li a:hover {
 
 <section class="hero">
     <video autoplay muted loop playsinline>
-        <source src="assets/hero-video.mp4" type="video/mp4">
+        <source src="hero-video.mp4" type="video/mp4">
     </video>
 
+    <div class="hero-overlay"></div>
+
+    <div class="floating-glow"></div>
+
     <div class="hero-content">
-        <h1>Creating Powerful Mobile Apps & Games</h1>
-        <p>Independent studio building scalable digital products designed for performance and long-term growth.</p>
-        <a href="#" class="btn">Explore Our Products</a>
+        <h1 class="fade-in">Building the Future of Interactive Experiences</h1>
+        <p class="fade-in-delay">
+            Independent studio crafting scalable mobile apps and ambitious game worlds.
+        </p>
+        <a href="#" class="btn glow-btn fade-in-delay-2">Explore Our Products</a>
+    </div>
+</section>
+    <section class="products">
+    <div class="products-container">
+        <h2>Our Published Products</h2>
+        <p class="subtitle">Real products. Real users. Built with long-term vision.</p>
+
+        <div class="product-grid">
+
+            <div class="product-card">
+                <img src="tictactoe.png" alt="Tic Tac Toe Pro">
+                <h3>Tic Tac Toe Pro</h3>
+                <p>Modern competitive classic game experience.</p>
+                <a href="#" class="product-btn">View on Play Store</a>
+            </div>
+
+            <div class="product-card">
+                <img src="alfaaz.png" alt="Alfaaz-e-Dil">
+                <h3>Alfaaz-e-Dil</h3>
+                <p>Premium poetry and quotes application.</p>
+                <a href="#" class="product-btn">View on Play Store</a>
+            </div>
+
+            <div class="product-card">
+                <img src="qrninja.png" alt="QR Ninja">
+                <h3>QR Ninja</h3>
+                <p>Fast and lightweight QR & barcode scanner.</p>
+                <a href="#" class="product-btn">View on Play Store</a>
+            </div>
+
+            <div class="product-card">
+                <img src="agemaster.png" alt="Age Master">
+                <h3>Age Master</h3>
+                <p>Accurate age calculator with clean UI.</p>
+                <a href="#" class="product-btn">View on Play Store</a>
+            </div>
+
+        </div>
     </div>
 </section>
 
