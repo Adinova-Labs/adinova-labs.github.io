@@ -393,4 +393,70 @@ nav a:hover {
 .core-logo-img {
   z-index: 3;
 }
+/* ================= STUDIO STATUS ================= */
+
+.studio-status {
+  padding: 120px 8%;
+  background: linear-gradient(180deg, #060912 0%, #05070f 100%);
+}
+
+.status-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 60px;
+  flex-wrap: wrap;
+}
+
+.status-left {
+  flex: 1;
+  min-width: 280px;
+}
+
+.status-left h2 {
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.status-left p {
+  color: #9aa4b2;
+  line-height: 1.6;
+  max-width: 420px;
+}
+
+.status-right {
+  flex: 1;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  min-width: 280px;
+}
+
+.status-card {
+  padding: 40px;
+  border-radius: 18px;
+  background: rgba(20, 25, 40, 0.6);
+  border: 1px solid rgba(156,125,255,0.2);
+  backdrop-filter: blur(12px);
+  text-align: center;
+  transition: all 0.3s ease;
+}
+
+.status-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(156,125,255,0.5);
+  box-shadow: 0 0 25px rgba(156,125,255,0.2);
+}
+
+.status-card h3 {
+  font-size: 32px;
+  color: #ffffff;
+  margin-bottom: 10px;
+}
+
+.status-card span {
+  color: #9aa4b2;
+  font-size: 14px;
+  letter-spacing: 1px;
+}
 
