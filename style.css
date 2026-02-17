@@ -253,65 +253,93 @@ nav a:hover {
   animation: spinClock 6s linear infinite;
 }
 
-/* CENTER GLOW */
-.core-center {
+/* ============================= */
+/* STABLE ROTATING CORE SYSTEM */
+/* ============================= */
+
+.hero-right {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-container {
+  position: relative;
+  width: 400px;
+  height: 400px;
+}
+
+/* Wraps rotate */
+.ring-wrap {
   position: absolute;
-  width: 140px;
-  height: 140px;
   top: 50%;
   left: 50%;
-  margin-top: -70px;
-  margin-left: -70px;
+  transform: translate(-50%, -50%);
+}
+
+/* Rings */
+.ring {
+  border-radius: 50%;
+  border: 1px solid rgba(156,125,255,0.6);
+}
+
+/* Outer */
+.outer-wrap {
+  animation: rotateClock 18s linear infinite;
+}
+.outer-ring {
+  width: 380px;
+  height: 380px;
+}
+
+/* Middle */
+.middle-wrap {
+  animation: rotateAnti 12s linear infinite;
+}
+.middle-ring {
+  width: 300px;
+  height: 300px;
+}
+
+/* Inner */
+.inner-wrap {
+  animation: rotateClock 6s linear infinite;
+}
+.inner-ring {
+  width: 220px;
+  height: 220px;
+}
+
+/* Glow Center */
+.core-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140px;
+  height: 140px;
+  transform: translate(-50%, -50%);
   background: radial-gradient(circle, #9c7dff 0%, #5e3cff 40%, transparent 75%);
   border-radius: 50%;
   filter: blur(25px);
-  animation: pulseEnergy 2.5s ease-in-out infinite;
+  animation: pulse 2.5s ease-in-out infinite;
 }
 
-/* ANIMATIONS */
-@keyframes spinClock {
+/* Animations */
+@keyframes rotateClock {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes spinAnti {
+@keyframes rotateAnti {
   from { transform: translate(-50%, -50%) rotate(360deg); }
   to { transform: translate(-50%, -50%) rotate(0deg); }
 }
 
-@keyframes pulseEnergy {
+@keyframes pulse {
   0%,100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
   50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
-}
-
-/* MODULE CARD */
-.module-card {
-  position: absolute;
-  right: 0;
-  bottom: 40px;
-  background: rgba(255,255,255,0.05);
-  backdrop-filter: blur(10px);
-  padding: 20px 25px;
-  border-radius: 12px;
-  border: 1px solid rgba(156,125,255,0.4);
-  width: 200px;
-}
-
-.module-card h4 {
-  font-size: 12px;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-  color: #9c7dff;
-}
-
-.module-card ul {
-  list-style: none;
-  padding: 0;
-}
-
-.module-card li {
-  font-size: 13px;
-  opacity: 0.8;
-  margin-bottom: 6px;
 }
 
