@@ -365,4 +365,12 @@ nav a:hover {
     transform: translate(-50%, -50%) rotate(360deg);
   }
 }
+.core-logo-svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 180px;
+  height: 180px;
+  transform: translate(-50%, -50%);
+}
 
