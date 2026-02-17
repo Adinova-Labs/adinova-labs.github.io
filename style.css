@@ -229,7 +229,7 @@ nav a:hover {
 .r1 {
   width: 420px;
   height: 420px;
-  border: 1px solid rgba(156,125,255,0.25);
+  border: 1px solid rgba(156,125,255,0.18);
   animation: spin1 18s linear infinite;
 }
 
@@ -255,8 +255,8 @@ nav a:hover {
   position: absolute;
   top: -5px;
   left: 50%;
-  width: 8px;
-  height: 8px;
+  width: 6px;
+  height: 6px;
   background: #9c7dff;
   border-radius: 50%;
   box-shadow: 0 0 10px #9c7dff, 0 0 20px #9c7dff;
@@ -273,8 +273,9 @@ nav a:hover {
   background:
     radial-gradient(circle, #9c7dff 0%, #5e3cff 35%, transparent 70%);
   box-shadow:
-    0 0 30px rgba(156,125,255,0.6),
-    0 0 60px rgba(156,125,255,0.3);
+    inset 0 0 40px rgba(0,0,0,0.6),
+    0 0 30px rgba(156,125,255,0.5),
+    0 0 60px rgba(156,125,255,0.2);
   animation: pulse 2.5s ease-in-out infinite;
 }
 
