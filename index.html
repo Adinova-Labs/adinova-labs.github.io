@@ -42,7 +42,56 @@
   <div class="ring r3"></div>
 
   <div class="inner-frame"></div>
-  <div class="core-logo">A</div>
+  <svg class="core-logo-svg" viewBox="0 0 300 300">
+
+  <defs>
+    <!-- Metallic Gradient -->
+    <linearGradient id="metalGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#2d3442"/>
+      <stop offset="40%" stop-color="#1a1f2b"/>
+      <stop offset="100%" stop-color="#0e1117"/>
+    </linearGradient>
+
+    <!-- Cyan + Purple Edge Glow -->
+    <linearGradient id="edgeGlow" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#00f0ff"/>
+      <stop offset="100%" stop-color="#9c7dff"/>
+    </linearGradient>
+
+    <!-- Outer Glow Effect -->
+    <filter id="neonGlow" x="-50%" y="-50%" width="200%" height="200%">
+      <feGaussianBlur stdDeviation="6" result="blur"/>
+      <feMerge>
+        <feMergeNode in="blur"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+  </defs>
+
+  <!-- Main A Shape -->
+  <polygon
+    points="150,20 260,260 210,260 175,190 125,190 90,260 40,260"
+    fill="url(#metalGrad)"
+    stroke="url(#edgeGlow)"
+    stroke-width="6"
+    filter="url(#neonGlow)"
+  />
+
+  <!-- Inner Cut Triangle -->
+  <polygon
+    points="150,90 195,170 105,170"
+    fill="#0b0f18"
+  />
+
+  <!-- Extra Mechanical Panel Line -->
+  <line
+    x1="125" y1="190"
+    x2="175" y2="190"
+    stroke="#1e2430"
+    stroke-width="4"
+  />
+
+</svg>
 
   <div class="scan-layer"></div>
 </div>
