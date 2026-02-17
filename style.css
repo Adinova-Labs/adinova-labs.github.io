@@ -181,24 +181,6 @@ nav a:hover {
   bottom: 80px;
   left: 0;
 }
-/* ===== CORE ENGINE ===== */
-
-/* ROTATING RINGS */
-.core-ring {
-  position: absolute;
-  border-radius: 50%;
-  border: 1px solid rgba(156,125,255,0.5);
-}
-/* Strong Visible Rotation */
-@keyframes rotateClock {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
-}
-
-@keyframes rotateAnti {
-  from { transform: rotate(360deg); }
-  to { transform: rotate(0deg); }
-}
 
 /* CORE ENERGY */
 .core-center {
