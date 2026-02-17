@@ -381,4 +381,16 @@ nav a:hover {
   transform: translate(-50%, -50%) scale(1.05);
 }
 
+.ring {
+  z-index: 1;
+  position: absolute;
+}
+
+.scan-layer {
+  z-index: 2;
+}
+
+.core-logo-img {
+  z-index: 3;
+}
 
