@@ -223,27 +223,44 @@ nav a:hover {
   top: 50%;
   left: 50%;
   border-radius: 50%;
-  border: 1px solid rgba(156,125,255,0.7);
   transform: translate(-50%, -50%);
 }
 
-/* Rings */
+/* Outer Ring */
 .r1 {
   width: 380px;
   height: 380px;
+  border: 1px solid rgba(156,125,255,0.4);
   animation: spin1 18s linear infinite;
 }
 
 .r2 {
   width: 280px;
   height: 280px;
+  border: 1px solid rgba(156,125,255,0.5);
   animation: spin2 10s linear infinite;
 }
 
 .r3 {
   width: 200px;
   height: 200px;
+  border: 1px solid rgba(156,125,255,0.6);
   animation: spin1 6s linear infinite;
+}
+
+/* ORBIT DOT */
+.r1::after,
+.r2::after,
+.r3::after {
+  content: "";
+  position: absolute;
+  top: -5px;
+  left: 50%;
+  width: 8px;
+  height: 8px;
+  background: #9c7dff;
+  border-radius: 50%;
+  box-shadow: 0 0 10px #9c7dff, 0 0 20px #9c7dff;
 }
 
 .center-glow {
