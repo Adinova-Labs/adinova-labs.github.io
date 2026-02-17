@@ -208,28 +208,6 @@ nav a:hover {
   border-radius: 50%;
   border: 1px solid rgba(156,125,255,0.5);
 }
-
-/* Ring 1 */
-.ring-1 {
-  width: 380px;
-  height: 380px;
-  animation: rotateClock 18s linear infinite;
-}
-
-/* Ring 2 */
-.ring-2 {
-  width: 300px;
-  height: 300px;
-  animation: rotateAnti 12s linear infinite;
-}
-
-/* Ring 3 */
-.ring-3 {
-  width: 220px;
-  height: 220px;
-  animation: rotateClock 8s linear infinite;
-}
-
 /* Strong Visible Rotation */
 @keyframes rotateClock {
   from { transform: rotate(0deg); }
