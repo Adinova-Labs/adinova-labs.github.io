@@ -207,9 +207,8 @@ nav a:hover {
 }
 
 .hero-right {
-  position: relative;
-  width: 450px;
-  height: 450px;
+  width: 520px;
+  height: 520px;
 }
 
 .core {
@@ -228,22 +227,22 @@ nav a:hover {
 
 /* Outer Ring */
 .r1 {
-  width: 380px;
-  height: 380px;
+  width: 420px;
+  height: 420px;
   border: 1px solid rgba(156,125,255,0.4);
   animation: spin1 18s linear infinite;
 }
 
 .r2 {
-  width: 280px;
-  height: 280px;
+  width: 320px;
+  height: 320px;
   border: 1px solid rgba(156,125,255,0.5);
   animation: spin2 10s linear infinite;
 }
 
 .r3 {
-  width: 200px;
-  height: 200px;
+  width: 230px;
+  height: 230px;
   border: 1px solid rgba(156,125,255,0.6);
   animation: spin1 6s linear infinite;
 }
@@ -267,12 +266,12 @@ nav a:hover {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 140px;
-  height: 140px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, #9c7dff 0%, #5e3cff 40%, transparent 70%);
+  background: radial-gradient(circle, #9c7dff 0%, #5e3cff 35%, transparent 65%);
   border-radius: 50%;
-  filter: blur(30px);
+  filter: blur(18px);
   animation: pulse 2.5s ease-in-out infinite;
 }
 
@@ -295,14 +294,14 @@ nav a:hover {
 /* Module Box */
 .module-box {
   position: absolute;
-  right: -40px;
-  bottom: 20px;
+  right: -20px;
+  bottom: 10px;
   background: rgba(255,255,255,0.05);
   backdrop-filter: blur(10px);
-  padding: 18px 22px;
-  border-radius: 12px;
-  border: 1px solid rgba(156,125,255,0.5);
-  width: 190px;
+  padding: 20px 24px;
+  border-radius: 14px;
+  border: 1px solid rgba(156,125,255,0.4);
+  width: 210px;
 }
 
 .module-box h4 {
