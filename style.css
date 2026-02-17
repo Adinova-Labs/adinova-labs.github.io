@@ -183,25 +183,6 @@ nav a:hover {
 }
 /* ===== CORE ENGINE ===== */
 
-.core-frame {
-  position: relative;
-  width: 420px;
-  height: 420px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-/* Outer Tactical Ring */
-.core-frame::before {
-  content: "";
-  position: absolute;
-  width: 420px;
-  height: 420px;
-  border-radius: 50%;
-  border: 1px solid rgba(156,125,255,0.25);
-}
-
 /* ROTATING RINGS */
 .core-ring {
   position: absolute;
