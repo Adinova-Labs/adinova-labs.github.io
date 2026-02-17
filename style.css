@@ -229,7 +229,7 @@ nav a:hover {
 .r1 {
   width: 420px;
   height: 420px;
-  border: 1px solid rgba(156,125,255,0.12);
+  border: 1px solid rgba(156,125,255,0.4);
   animation: spin1 18s linear infinite;
 }
 
@@ -354,7 +354,7 @@ nav a:hover {
   );
   animation: scanRotate 6s linear infinite;
   mix-blend-mode: screen;
-  opacity: 0.6;
+  opacity: 0.35;
 }
 
 @keyframes scanRotate {
@@ -372,8 +372,8 @@ nav a:hover {
   width: 160px;
   transform: translate(-50%, -50%);
   filter:
-    drop-shadow(0 0 15px rgba(0, 240, 255, 0.5))
-    drop-shadow(0 0 25px rgba(156,125,255,0.4));
+    drop-shadow(0 0 10px rgba(0, 240, 255, 0.4))
+    drop-shadow(0 0 18px rgba(156,125,255,0.3));
   transition: transform 0.3s ease;
 }
 
