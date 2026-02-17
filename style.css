@@ -196,150 +196,108 @@ nav a:hover {
   0%,100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.25); opacity: 1; }
 }
-/* ============================= */
-/* HERO RIGHT FIXED SYSTEM */
-/* ============================= */
+/* ================= HERO CLEAN VERSION ================= */
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 80px;
+  min-height: 90vh;
+}
 
 .hero-right {
   position: relative;
-  width: 500px;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 450px;
+  height: 450px;
 }
 
-/* CORE WRAPPER */
-.core-wrapper {
+.core {
   position: relative;
-  width: 400px;
-  height: 400px;
+  width: 100%;
+  height: 100%;
 }
 
-/* RINGS */
-.core-ring {
+.ring {
   position: absolute;
+  top: 50%;
+  left: 50%;
   border-radius: 50%;
-  border: 1px solid rgba(156,125,255,0.5);
-  top: 50%;
-  left: 50%;
-  transform-origin: center;
-}
-
-/* OUTER */
-.ring-outer {
-  width: 380px;
-  height: 380px;
-  margin-top: -190px;
-  margin-left: -190px;
-  animation: spinClock 16s linear infinite;
-}
-
-/* MIDDLE */
-.ring-middle {
-  width: 300px;
-  height: 300px;
-  margin-top: -150px;
-  margin-left: -150px;
-  animation: spinAnti 10s linear infinite;
-}
-
-/* INNER */
-.ring-inner {
-  width: 220px;
-  height: 220px;
-  margin-top: -110px;
-  margin-left: -110px;
-  animation: spinClock 6s linear infinite;
-}
-
-/* ============================= */
-/* STABLE ROTATING CORE SYSTEM */
-/* ============================= */
-
-.hero-right {
-  position: relative;
-  width: 500px;
-  height: 500px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-}
-
-.core-container {
-  position: relative;
-  width: 400px;
-  height: 400px;
-}
-
-/* Wraps rotate */
-.ring-wrap {
-  position: absolute;
-  top: 50%;
-  left: 50%;
+  border: 1px solid rgba(156,125,255,0.7);
   transform: translate(-50%, -50%);
 }
 
 /* Rings */
-.ring {
-  border-radius: 50%;
-  border: 1px solid rgba(156,125,255,0.6);
-}
-
-/* Outer */
-.outer-wrap {
-  animation: rotateClock 18s linear infinite;
-}
-.outer-ring {
+.r1 {
   width: 380px;
   height: 380px;
+  animation: spin1 18s linear infinite;
 }
 
-/* Middle */
-.middle-wrap {
-  animation: rotateAnti 12s linear infinite;
-}
-.middle-ring {
-  width: 300px;
-  height: 300px;
+.r2 {
+  width: 280px;
+  height: 280px;
+  animation: spin2 10s linear infinite;
 }
 
-/* Inner */
-.inner-wrap {
-  animation: rotateClock 6s linear infinite;
-}
-.inner-ring {
-  width: 220px;
-  height: 220px;
+.r3 {
+  width: 200px;
+  height: 200px;
+  animation: spin1 6s linear infinite;
 }
 
-/* Glow Center */
-.core-center {
+.center-glow {
   position: absolute;
   top: 50%;
   left: 50%;
   width: 140px;
   height: 140px;
   transform: translate(-50%, -50%);
-  background: radial-gradient(circle, #9c7dff 0%, #5e3cff 40%, transparent 75%);
+  background: radial-gradient(circle, #9c7dff 0%, #5e3cff 40%, transparent 70%);
   border-radius: 50%;
-  filter: blur(25px);
+  filter: blur(30px);
   animation: pulse 2.5s ease-in-out infinite;
 }
 
 /* Animations */
-@keyframes rotateClock {
+@keyframes spin1 {
   from { transform: translate(-50%, -50%) rotate(0deg); }
   to { transform: translate(-50%, -50%) rotate(360deg); }
 }
 
-@keyframes rotateAnti {
+@keyframes spin2 {
   from { transform: translate(-50%, -50%) rotate(360deg); }
   to { transform: translate(-50%, -50%) rotate(0deg); }
 }
 
 @keyframes pulse {
-  0%,100% { transform: translate(-50%, -50%) scale(1); opacity: 0.8; }
-  50% { transform: translate(-50%, -50%) scale(1.2); opacity: 1; }
+  0%,100% { transform: translate(-50%, -50%) scale(1); }
+  50% { transform: translate(-50%, -50%) scale(1.2); }
+}
+
+/* Module Box */
+.module-box {
+  position: absolute;
+  right: -40px;
+  bottom: 20px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 18px 22px;
+  border-radius: 12px;
+  border: 1px solid rgba(156,125,255,0.5);
+  width: 190px;
+}
+
+.module-box h4 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 8px;
+  color: #9c7dff;
+}
+
+.module-box p {
+  font-size: 13px;
+  margin-bottom: 6px;
+  opacity: 0.8;
 }
 
