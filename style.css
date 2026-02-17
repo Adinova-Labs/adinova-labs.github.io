@@ -396,14 +396,34 @@ nav a:hover {
 /* ================= STUDIO STATUS ================= */
 
 .studio-status {
-  padding: 120px 8%;
-  background: linear-gradient(180deg, #060912 0%, #05070f 100%);
+  padding: 140px 8%;
+  background: linear-gradient(
+    180deg,
+    rgba(6,9,18,0) 0%,
+    rgba(5,7,15,0.95) 20%,
+    #05070f 100%
+  );
+  position: relative;
 }
-
+.studio-status::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(156,125,255,0.6),
+    transparent
+  );
+}
 .status-container {
   display: flex;
   justify-content: space-between;
-  align-items: center;
+  align-items: flex-start;
   gap: 60px;
   flex-wrap: wrap;
 }
@@ -433,8 +453,8 @@ nav a:hover {
 }
 
 .status-card {
-  padding: 40px;
-  border-radius: 18px;
+  padding: 32px;
+  border-radius: 16px;
   background: rgba(20, 25, 40, 0.6);
   border: 1px solid rgba(156,125,255,0.2);
   backdrop-filter: blur(12px);
