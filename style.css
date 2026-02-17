@@ -181,3 +181,81 @@ nav a:hover {
   bottom: 80px;
   left: 0;
 }
+/* ===== CORE ENGINE ===== */
+
+.core-frame {
+  position: relative;
+  width: 420px;
+  height: 420px;
+  border-radius: 50%;
+  border: 1px solid rgba(156,125,255,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.core-ring {
+  position: absolute;
+  border-radius: 50%;
+  border: 1px solid rgba(156,125,255,0.4);
+  animation: rotate linear infinite;
+}
+
+.ring-1 {
+  width: 380px;
+  height: 380px;
+  animation-duration: 20s;
+}
+
+.ring-2 {
+  width: 300px;
+  height: 300px;
+  animation-duration: 15s;
+  animation-direction: reverse;
+}
+
+.ring-3 {
+  width: 220px;
+  height: 220px;
+  animation-duration: 10s;
+}
+
+@keyframes rotate {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+.core-center {
+  width: 120px;
+  height: 120px;
+  background: radial-gradient(circle, #9c7dff 0%, transparent 70%);
+  border-radius: 50%;
+  filter: blur(20px);
+  animation: pulse 3s infinite ease-in-out;
+}
+
+/* ===== MODULE CARD ===== */
+
+.module-card {
+  position: absolute;
+  bottom: -40px;
+  right: -60px;
+  background: rgba(255,255,255,0.05);
+  backdrop-filter: blur(10px);
+  padding: 20px 30px;
+  border-radius: 12px;
+  border: 1px solid rgba(156,125,255,0.4);
+}
+
+.module-card h4 {
+  font-size: 12px;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  color: #9c7dff;
+}
+
+.module-card p {
+  font-size: 13px;
+  opacity: 0.8;
+  margin-bottom: 4px;
+}
