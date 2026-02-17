@@ -3,10 +3,186 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Adinova Labs | Mobile App & Game Studio</title>
+<title>Adinova Labs | Cyber Lab</title>
 
-<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
+<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;600;700&family=Inter:wght@400;600&display=swap" rel="stylesheet">
+
+<style>
+
+/* RESET */
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+scroll-behavior:smooth;
+}
+
+body{
+background:#050B1A;
+color:white;
+font-family:'Inter',sans-serif;
+overflow-x:hidden;
+}
+
+/* NAV */
+nav{
+position:fixed;
+width:100%;
+padding:20px 60px;
+display:flex;
+justify-content:space-between;
+align-items:center;
+background:rgba(5,11,26,0.4);
+backdrop-filter:blur(20px);
+border-bottom:1px solid rgba(123,63,228,0.2);
+z-index:1000;
+}
+
+nav ul{
+display:flex;
+list-style:none;
+gap:40px;
+}
+
+nav ul li a{
+text-decoration:none;
+color:#aaa;
+transition:0.3s;
+font-weight:500;
+}
+
+nav ul li a:hover{
+color:#7B3FE4;
+}
+
+.logo{
+font-family:'Orbitron',sans-serif;
+font-size:20px;
+font-weight:700;
+background:linear-gradient(90deg,#4F8CFF,#7B3FE4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+/* HERO */
+.hero{
+height:100vh;
+display:flex;
+align-items:center;
+justify-content:center;
+flex-direction:column;
+text-align:center;
+position:relative;
+}
+
+/* Animated Background Grid */
+.hero::before{
+content:"";
+position:absolute;
+width:200%;
+height:200%;
+background:linear-gradient(transparent 95%, rgba(79,140,255,0.1) 100%);
+background-size:60px 60px;
+animation:moveGrid 20s linear infinite;
+z-index:-2;
+}
+
+@keyframes moveGrid{
+0%{transform:translateY(0);}
+100%{transform:translateY(60px);}
+}
+
+/* Glowing Orb */
+.glow{
+position:absolute;
+width:600px;
+height:600px;
+background:radial-gradient(circle,#7B3FE4 0%, transparent 70%);
+filter:blur(150px);
+z-index:-1;
+animation:float 6s ease-in-out infinite alternate;
+}
+
+@keyframes float{
+from{transform:translateY(-20px);}
+to{transform:translateY(20px);}
+}
+
+/* CYBER RING */
+.cyber-ring{
+width:200px;
+height:200px;
+border-radius:50%;
+border:3px solid #4F8CFF;
+position:absolute;
+animation:rotate 10s linear infinite;
+}
+
+@keyframes rotate{
+from{transform:rotate(0deg);}
+to{transform:rotate(360deg);}
+}
+
+.hero h1{
+font-family:'Orbitron',sans-serif;
+font-size:60px;
+margin-bottom:20px;
+background:linear-gradient(90deg,#ffffff,#4F8CFF,#7B3FE4);
+-webkit-background-clip:text;
+-webkit-text-fill-color:transparent;
+}
+
+.hero p{
+color:#aaa;
+font-size:18px;
+margin-bottom:40px;
+max-width:600px;
+}
+
+/* BUTTONS */
+.btn{
+padding:14px 36px;
+border-radius:40px;
+text-decoration:none;
+font-weight:600;
+margin:10px;
+transition:0.3s;
+display:inline-block;
+}
+
+.primary{
+background:linear-gradient(90deg,#4F8CFF,#7B3FE4);
+box-shadow:0 0 25px rgba(123,63,228,0.5);
+color:white;
+}
+
+.primary:hover{
+transform:translateY(-3px);
+box-shadow:0 0 40px rgba(123,63,228,0.9);
+}
+
+.secondary{
+border:1px solid #4F8CFF;
+color:#4F8CFF;
+}
+
+.secondary:hover{
+background:#4F8CFF;
+color:white;
+}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+.hero h1{
+font-size:36px;
+}
+nav{
+padding:20px;
+}
+nav ul{
+gap:20px;
+}
+}
 
 </style>
 </head>
@@ -14,74 +190,28 @@
 <body>
 
 <nav>
-    <div class="logo">
-        <img src="adinovalogo.png" alt="Adinova Labs Logo">
-        <span>Adinova Labs</span>
-    </div>
-
-    <ul>
-        <li><a href="#">Home</a></li>
-        <li><a href="#">Apps</a></li>
-        <li><a href="#">Games</a></li>
-        <li><a href="#">Vision</a></li>
-        <li><a href="#">Contact</a></li>
-    </ul>
+<div class="logo">ADINOVA LABS</div>
+<ul>
+<li><a href="#">Home</a></li>
+<li><a href="#">Apps</a></li>
+<li><a href="#">Games</a></li>
+<li><a href="#">Vision</a></li>
+<li><a href="#">Contact</a></li>
+</ul>
 </nav>
 
 <section class="hero">
-    <video autoplay muted loop playsinline>
-        <source src="hero-video.mp4" type="video/mp4">
-    </video>
+<div class="glow"></div>
+<div class="cyber-ring"></div>
 
-    <div class="hero-overlay"></div>
+<h1>Enter The Cyber Lab</h1>
+<p>Crafting the future of scalable mobile applications and immersive interactive worlds.</p>
 
-    <div class="floating-glow"></div>
+<div>
+<a href="#" class="btn primary">Explore Projects</a>
+<a href="#" class="btn secondary">Enter The Lab</a>
+</div>
 
-    <div class="hero-content">
-        <h1 class="fade-in">Building the Future of Interactive Experiences</h1>
-        <p class="fade-in-delay">
-            Independent studio crafting scalable mobile apps and ambitious game worlds.
-        </p>
-        <a href="#" class="btn glow-btn fade-in-delay-2">Explore Our Products</a>
-    </div>
-</section>
-    <section class="products">
-    <div class="products-container">
-        <h2>Our Published Products</h2>
-        <p class="subtitle">Real products. Real users. Built with long-term vision.</p>
-
-        <div class="product-grid">
-
-            <div class="product-card">
-                <img src="tictactoe.png" alt="Tic Tac Toe Pro">
-                <h3>Tic Tac Toe Pro</h3>
-                <p>Modern competitive classic game experience.</p>
-                <a href="#" class="product-btn">View on Play Store</a>
-            </div>
-
-            <div class="product-card">
-                <img src="alfaaz.png" alt="Alfaaz-e-Dil">
-                <h3>Alfaaz-e-Dil</h3>
-                <p>Premium poetry and quotes application.</p>
-                <a href="#" class="product-btn">View on Play Store</a>
-            </div>
-
-            <div class="product-card">
-                <img src="qrninja.png" alt="QR Ninja">
-                <h3>QR Ninja</h3>
-                <p>Fast and lightweight QR & barcode scanner.</p>
-                <a href="#" class="product-btn">View on Play Store</a>
-            </div>
-
-            <div class="product-card">
-                <img src="agemaster.png" alt="Age Master">
-                <h3>Age Master</h3>
-                <p>Accurate age calculator with clean UI.</p>
-                <a href="#" class="product-btn">View on Play Store</a>
-            </div>
-
-        </div>
-    </div>
 </section>
 
 </body>
