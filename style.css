@@ -321,4 +321,36 @@ nav a:hover {
   margin-bottom: 6px;
   opacity: 0.8;
 }
+/* ================= SCAN OVERLAY ================= */
+
+.scan-layer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 420px;
+  height: 420px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  pointer-events: none;
+  background: conic-gradient(
+    from 0deg,
+    rgba(156,125,255,0.0) 0deg,
+    rgba(156,125,255,0.15) 20deg,
+    rgba(156,125,255,0.35) 40deg,
+    rgba(156,125,255,0.15) 60deg,
+    rgba(156,125,255,0.0) 80deg
+  );
+  animation: scanRotate 6s linear infinite;
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+@keyframes scanRotate {
+  from {
+    transform: translate(-50%, -50%) rotate(0deg);
+  }
+  to {
+    transform: translate(-50%, -50%) rotate(360deg);
+  }
+}
 
