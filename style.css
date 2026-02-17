@@ -262,21 +262,33 @@ nav a:hover {
   box-shadow: 0 0 10px #9c7dff, 0 0 20px #9c7dff;
 }
 
-.center-glow {
+/* ===== INNER FRAME ===== */
+
+.inner-frame {
   position: absolute;
   top: 50%;
   left: 50%;
-  width: 100px;
-  height: 100px;
+  width: 120px;
+  height: 120px;
   transform: translate(-50%, -50%);
   border-radius: 50%;
-  background:
-    radial-gradient(circle, #9c7dff 0%, #5e3cff 35%, transparent 70%);
-  box-shadow:
-    inset 0 0 40px rgba(0,0,0,0.6),
-    0 0 30px rgba(156,125,255,0.5),
-    0 0 60px rgba(156,125,255,0.2);
-  animation: pulse 2.5s ease-in-out infinite;
+  border: 1px solid rgba(156,125,255,0.4);
+}
+
+/* ===== CORE LOGO ===== */
+
+.core-logo {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-size: 48px;
+  font-weight: 600;
+  letter-spacing: 4px;
+  color: #ffffff;
+  text-shadow:
+    0 0 10px rgba(156,125,255,0.8),
+    0 0 25px rgba(156,125,255,0.4);
 }
 
 /* Animations */
