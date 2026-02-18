@@ -88,31 +88,31 @@ body {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
     gap: 40px;
-    margin-top: 40px;
+    margin-top: 50px;
 }
 
-.app-card a {
-    display: inline-block;
-    background: #2563eb;
-    color: #ffffff;
-    padding: 12px 22px;
-    border-radius: 8px;
-    font-size: 14px;
-    font-weight: 600;
-    text-decoration: none;
-    transition: 0.25s ease;
-    white-space: nowrap;   /* prevents text breaking */
+
+.app-card {
+    background: #ffffff;
+    padding: 40px 28px;
+    border-radius: 18px;
+    border: 1px solid #e6ebf5;
+    text-align: center;
+    box-shadow: 0 10px 25px rgba(0, 60, 150, 0.05);
+    transition: 0.3s ease;
 }
 
-.app-card a:hover {
-    background: #1e4fd8;
+.app-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 35px rgba(0, 60, 150, 0.08);
 }
 
 
 .app-card img {
     width: 95px;
-    margin-bottom: 20px;
+    margin-bottom: 22px;
 }
+
 
 
 .app-card h3 {
