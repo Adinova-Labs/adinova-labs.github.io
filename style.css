@@ -69,6 +69,21 @@ nav a:hover {
   justify-content: space-between;
   padding: 0 80px;
 }
+.hero::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 60%;
+    height: 1px;
+    background: linear-gradient(
+        90deg,
+        transparent,
+        rgba(156,125,255,0.4),
+        transparent
+    );
+}
 
 /* LEFT */
 .hero-left {
@@ -151,6 +166,7 @@ nav a:hover {
   0%, 100% { transform: scale(1); opacity: 0.8; }
   50% { transform: scale(1.1); opacity: 1; }
 }
+
 
 /* INFO CARDS */
 .info-card {
@@ -396,7 +412,8 @@ nav a:hover {
 /* ================= STUDIO STATUS ================= */
 
 .studio-status {
-  padding: 140px 8%;
+  padding: 180px 8% 140px;
+    margin-top: 80px;
   background: #05070f;
   position: relative;
 }
