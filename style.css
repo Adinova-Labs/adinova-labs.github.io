@@ -91,20 +91,23 @@ body {
     margin-top: 40px;
 }
 
-.app-card {
-    background: #ffffff;
-    padding: 36px 28px;
-    border-radius: 16px;
-    border: 1px solid #e5e9f2;
-    text-align: center;
+.app-card a {
+    display: inline-block;
+    background: #2563eb;
+    color: #ffffff;
+    padding: 12px 22px;
+    border-radius: 8px;
+    font-size: 14px;
+    font-weight: 600;
+    text-decoration: none;
     transition: 0.25s ease;
+    white-space: nowrap;   /* prevents text breaking */
 }
 
-
-.app-card:hover {
-    box-shadow: 0 12px 30px rgba(37,99,235,0.08);
-    transform: translateY(-4px);
+.app-card a:hover {
+    background: #1e4fd8;
 }
+
 
 .app-card img {
     width: 95px;
