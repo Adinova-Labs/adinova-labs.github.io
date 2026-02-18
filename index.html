@@ -1,105 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>Adinova Labs | Digital Command Center</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Adinova Labs</title>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<div class="grid-overlay"></div>
-
 <header class="navbar">
-  <div class="logo">ADINOVA LABS</div>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="apps.html">Apps</a>
-    <a href="games.html">Games</a>
-    <a href="vision.html">Vision</a>
-    <a href="contact.html" class="nav-btn">Contact</a>
-  </nav>
+    <div class="logo">ADINOVA LABS</div>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="apps.html">Apps</a>
+        <a href="privacy.html">Privacy</a>
+        <a href="terms.html">Terms</a>
+        <a href="contact.html">Contact</a>
+    </nav>
 </header>
-  <section class="hero">
 
-  <div class="hero-left">
-    <span class="tag">DIGITAL INNOVATION LAB</span>
-    <h1>Building The Future<br>With Code & Creativity</h1>
-    <p>
-      We engineer premium Android apps, high-performance games,
-      and scalable digital products for the next generation.
-    </p>
-    <div class="hero-buttons">
-      <a href="apps.html" class="btn-primary">Explore Apps</a>
-      <a href="vision.html" class="btn-outline">Enter The Lab</a>
-    </div>
-  </div>
-
-  <div class="hero-right">
-    <div class="core">
-  <div class="ring r1"></div>
-  <div class="ring r2"></div>
-  <div class="ring r3"></div>
-  <div class="scan-layer"></div>
-
-  <img src="logo.png" class="core-logo-img" alt="Adinova Labs Logo">
-
-</div>
-
-    <div class="module-box">
-      <h4>ACTIVE MODULES</h4>
-      <p>Apps Division</p>
-      <p>Games Division</p>
-      <p>AI Lab</p>
-    </div>
-  </div>
- <section class="studio-status">
-  <div class="status-container">
-
-    <div class="status-left reveal">
-      <h2>Studio Status</h2>
-      <p>Adinova Labs is actively building scalable apps, immersive games, and next-gen digital products across multiple domains.</p>
-    </div>
-
-    <div class="status-right">
-      <div class="status-card reveal">
-        <h3>8+</h3>
-        <span>Apps Published</span>
-      </div>
-
-      <div class="status-card reveal">
-        <h3>3</h3>
-        <span>Game Projects</span>
-      </div>
-
-      <div class="status-card reveal">
-        <h3>10K+</h3>
-        <span>Users Reached</span>
-      </div>
-
-      <div class="status-card reveal">
-        <h3>5+</h3>
-        <span>Domains Explored</span>
-      </div>
-    </div>
-
-  </div>
+<section class="hero">
+    <h1>Building Quality Android Apps</h1>
+    <p>Adinova Labs develops practical, user-friendly Android applications focused on performance, simplicity, and value.</p>
+    <a href="apps.html" class="btn-primary">Explore Our Apps</a>
 </section>
-    
-  <script>
-  const reveals = document.querySelectorAll(".reveal");
 
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        entry.target.classList.add("active");
-      }
-    });
-  }, {
-    threshold: 0.2
-  });
+<section class="section gray">
+    <h2>About Us</h2>
+    <p>Adinova Labs is an independent Android app development studio focused on delivering reliable tools, utilities, and engaging applications for everyday users.</p>
+</section>
 
-  reveals.forEach(el => observer.observe(el));
-</script>
+<footer class="footer">
+    © 2026 Adinova Labs. All rights reserved.
+</footer>
+
 </body>
 </html>
