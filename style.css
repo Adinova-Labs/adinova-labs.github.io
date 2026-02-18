@@ -443,7 +443,6 @@ nav a:hover {
 .status-left {
   flex: 1;
   min-width: 280px;
-  margin-top: -20px;
 }
 
 .status-left h2 {
@@ -535,8 +534,8 @@ nav a:hover {
 
 .reveal {
   opacity: 0;
-  transform: translateY(40px);
-  transition: all 0.8s ease;
+  transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
 }
 
 .reveal.active {
@@ -545,8 +544,9 @@ nav a:hover {
 }
 
 /* Stagger effect for cards */
-.status-card:nth-child(1) { transition-delay: 0.1s; }
-.status-card:nth-child(2) { transition-delay: 0.2s; }
-.status-card:nth-child(3) { transition-delay: 0.3s; }
-.status-card:nth-child(4) { transition-delay: 0.4s; }
+.status-right .status-card:nth-child(1) { transition-delay: 0.1s; }
+.status-right .status-card:nth-child(2) { transition-delay: 0.2s; }
+.status-right .status-card:nth-child(3) { transition-delay: 0.3s; }
+.status-right .status-card:nth-child(4) { transition-delay: 0.4s; }
+
 
