@@ -180,6 +180,43 @@ body {
     line-height: 1.7;
     color: #555;
 }
+.contact-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 30px;
+    margin-top: 40px;
+}
+
+.contact-card {
+    background: #ffffff;
+    padding: 30px;
+    border-radius: 16px;
+    border: 1px solid #e5e9f2;
+    text-align: center;
+    transition: 0.25s ease;
+}
+
+.contact-card i {
+    font-size: 28px;
+    color: #2563eb;
+    margin-bottom: 15px;
+}
+
+.contact-card h3 {
+    margin-bottom: 10px;
+    font-size: 18px;
+}
+
+.contact-card p a {
+    color: #2563eb;
+    text-decoration: none;
+}
+
+.contact-card:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.08);
+}
+
 /* FOOTER */
 .footer {
     padding: 50px 8%;
