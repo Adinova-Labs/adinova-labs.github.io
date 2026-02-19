@@ -18,26 +18,40 @@ body {
 
 /* NAVBAR */
 .navbar {
-    padding: 18px 8%;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-bottom: 1px solid #eef1f6;
+    padding: 20px 8%;
+    background: #ffffff;
+    border-bottom: 1px solid #e5e9f2;
 }
 
-.logo img {
-    height: 40px;
+.logo-area {
+    display: flex;
+    align-items: center;
+    gap: 10px;
 }
 
-.navbar a {
+.logo-area img {
+    width: 32px;
+}
+
+.logo-area span {
+    font-weight: 700;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+.navbar nav a {
+    margin-left: 25px;
     text-decoration: none;
-    margin-left: 24px;
-    color: #4a5568;
-    font-weight: 500;
+    color: #333;
+    font-size: 14px;
 }
 
-.navbar a:hover {
+.navbar nav a.active {
     color: #2563eb;
+    font-weight: 600;
 }
 
 /* HERO */
